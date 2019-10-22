@@ -10,9 +10,11 @@ To design and prototype the system, I utilize either Open Smart Home Simulator (
 
 ## Resources
 
-Connecting the STM Nucleo to AWS IoT - https://github.com/Klika-Tech/nucleo-aws-iot-demo/blob/master/doc/NUCLEO.md with the STM Nucleo WiFi Expansion Board (https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-connect-hw/x-nucleo-idw01m1.html#sample-and-buy)
+**Project Website** - https://cspades.github.io/predi-home/
 
-Connecting HomeI/O to STM Nucleo via ConnectI/O - Node: https://buy.advantech.com/I-O-Devices-Communication/USB-IO-Modules-Multifunction-USB-Modules/model-USB-4704-AE.htm with Documentation: https://docs.realgames.co/connectio/usb-4704/
+**Connecting the STM Nucleo to AWS IoT** - https://github.com/Klika-Tech/nucleo-aws-iot-demo/blob/master/doc/NUCLEO.md with the STM Nucleo WiFi Expansion Board (https://www.st.com/content/st_com/en/products/ecosystems/stm32-open-development-environment/stm32-nucleo-expansion-boards/stm32-ode-connect-hw/x-nucleo-idw01m1.html#sample-and-buy)
+
+**Connecting HomeI/O to STM Nucleo via ConnectI/O** - Node: https://buy.advantech.com/I-O-Devices-Communication/USB-IO-Modules-Multifunction-USB-Modules/model-USB-4704-AE.htm with Documentation: https://docs.realgames.co/connectio/usb-4704/
 
 ## Development Timeline
 

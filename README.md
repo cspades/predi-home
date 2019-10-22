@@ -14,7 +14,7 @@ To design and prototype the system, I utilize either Open Smart Home Simulator (
 
 **Week 6** - Fix any remaining problems in the software and hardware, and in consideration of the data structures, memory, latency, and the simulation API, design the imitation learning or reinforcement learning algorithm on AWS.
 
-**Week 7** - Design and code the ML algorithm on AWS, and test it by training on simulated/generated trajectories of the smart home.
+**Week 7** - Design and code the ML algorithm on AWS, and test/visualize it by training on simulated/generated trajectories of the smart home.
 
 **Week 8** - Extra time in case of delayed development, as well as prepare for the Demo.
 

@@ -10,10 +10,16 @@ To design and prototype the system, I utilize either Open Smart Home Simulator (
 
 ## Development Timeline
 
-Week 5 - Set up the hardware and software platform for the system, with tests to communicate between PC (HomeIO/ConnectIO/OpenSHS), STM Nucleo, and AWS.
-Week 6 - Fix any remaining problems in the software and hardware, and in consideration of the data structures, memory, latency, and the simulation API, design the imitation learning or reinforcement learning algorithm on AWS.
-Week 7 - Design and code the ML algorithm on AWS, and test it by training on simulated/generated trajectories of the smart home.
-Week 8 - Extra time in case of delayed development, as well as prepare for the Demo.
-Week 9 - Close the loop and code the smart home control algorithm that collects/processes data from the simulation, sends it to the Cloud (AWS), retrieves the adaptive/learned model, and control the smart home simulation.
-Week 10 - Debug/optimize the control and ML algorithm(s), and prepare auxiliary materials (report, video, website, etc.) for the Project. Study the possibility of applying unsupervised learning on the training dataset to extract approximately unique smart home trajectories that the resident can use to customize the autonomy of the smart home.
-Finals - Complete the Project and fork/clone the GitHub.
+**Week 5** - Set up the hardware and software platform for the system, with tests to communicate between PC (HomeIO/ConnectIO/OpenSHS), STM Nucleo, and AWS.
+
+**Week 6** - Fix any remaining problems in the software and hardware, and in consideration of the data structures, memory, latency, and the simulation API, design the imitation learning or reinforcement learning algorithm on AWS.
+
+**Week 7** - Design and code the ML algorithm on AWS, and test it by training on simulated/generated trajectories of the smart home.
+
+**Week 8** - Extra time in case of delayed development, as well as prepare for the Demo.
+
+**Week 9** - Close the loop and code the smart home control algorithm that collects/processes data from the simulation, sends it to the Cloud (AWS), retrieves the adaptive/learned model, and control the smart home simulation.
+
+**Week 10** - Debug/optimize the control and ML algorithm(s), and prepare auxiliary materials (report, video, website, etc.) for the Project. Study the possibility of applying unsupervised learning on the training dataset to extract approximately unique smart home trajectories that the resident can use to customize the autonomy of the smart home.
+
+**Finals Week** - Complete the Project and fork/clone the GitHub.

@@ -2,7 +2,7 @@
 
 ## Abstract / Objective
 
-A Cloud AI-driven embedded system that learns the discretized time-series state trajectory of a smart home to predict and automate sequences of states and actions via behavioral cloning or reinforcement learning on human-computer/appliance interactions. In particular, a neural net trains on the time-domain state of the smart home either through imitation learning on the actions of the resident, or alternatively if time permits, (inverse) reinforcement learning to learn a state-action control policy (via RL) driven by minimizing a "control-override" loss function representing differences in the learned behavior of the resident and the policy at any point in time (generated via imitation for inverse RL), and periodically (depending on the periodicity or frequency of the learned trajectory) update the smart home controller to reflect changes in the state trajectory of the smart home.
+A Cloud AI-driven embedded system that learns the discretized time-series state trajectory of a smart home to predict and automate sequences of states and actions via behavioral cloning or reinforcement learning on human-computer/appliance interactions. In particular, a neural net trains on the time-domain state of the smart home either through imitation learning on the actions of the resident, or alternatively if time permits, (inverse) reinforcement learning to learn a state-action control policy (via RL) driven by minimizing a "control-override" loss function representing differences in the policy trajectory and learned behavior of the resident (generated via imitation for inverse RL), and periodically (depending on the periodicity or frequency of the learned trajectory) update the smart home controller to reflect changes in the state trajectory of the smart home.
 
 ## Project Specifications and Methodology
 
@@ -18,7 +18,7 @@ To control/actuate the predictive model of the smart home and process the traini
 
 **Connecting HomeI/O to STM Nucleo via ConnectI/O** - Node: https://buy.advantech.com/I-O-Devices-Communication/USB-IO-Modules-Multifunction-USB-Modules/model-USB-4704-AE.htm with Documentation: https://docs.realgames.co/connectio/usb-4704/
 
-**Apprenticeship Learning via Inverse RL** - https://ai.stanford.edu/~ang/papers/icml04-apprentice.pdf (Note: Educational motivation. I will not be referencing the paper with complete generality of loss/reward function for inverse RL, since I have particular knowledge about the loss function I want to learn - the difference between the learned optimal trajectory and the policy-driven trajectory, which can be learned by canonical imitation learning. However, it covers some insightful topics pertaining to the relationship between inverse RL and RL.)
+**Apprenticeship Learning via Inverse RL** - https://ai.stanford.edu/~ang/papers/icml04-apprentice.pdf (Note: Educational motivation. I will not be referencing the paper with complete generality of loss/reward function for inverse RL, since I have particular knowledge about the loss function I want to learn - the difference between the learned optimal trajectory and the trained policy-driven trajectory, which can be learned by canonical imitation learning. However, it covers some insightful topics pertaining to the relationship between inverse RL and RL.)
 
 ## Development Timeline
 

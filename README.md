@@ -18,6 +18,8 @@ To control/actuate the predictive model of the smart home and process the traini
 
 **Connecting HomeI/O to STM Nucleo via ConnectI/O** - Node: https://buy.advantech.com/I-O-Devices-Communication/USB-IO-Modules-Multifunction-USB-Modules/model-USB-4704-AE.htm with Documentation: https://docs.realgames.co/connectio/usb-4704/
 
+**Apprenticeship Learning via Inverse RL** - https://ai.stanford.edu/~ang/papers/icml04-apprentice.pdf (Note: Educational motivation. I will not be using the paper whatsoever, since I have particular knowledge about the loss function I want to learn - the difference between the optimal trajectory and the predicted trajectory. However, it covers some insightful topics pertaining to the relationship between inverse RL and RL.)
+
 ## Development Timeline
 
 **Week 5** - Set up the hardware and software platform for the system, with tests to communicate between PC (HomeIO/ConnectIO/OpenSHS), STM Nucleo, and AWS.

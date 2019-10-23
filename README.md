@@ -22,7 +22,7 @@ To control/actuate the predictive model of the smart home and process the traini
 
 ## Development Timeline
 
-**Week 5** - Set up the hardware and software platform for the system, with tests to communicate between PC (HomeIO/ConnectIO/OpenSHS), STM Nucleo, and AWS. (Purchase WiFi board and either a USB to USART adapter or USB node depending on OpenSHS or HomeI/O, in addition to pin and USB cables. Verify that the STM Nucleo is sufficient, since it is the weakest link of the project.)
+**Week 5** - Set up the hardware and software platform for the system, with tests to communicate between PC (HomeIO/ConnectIO/OpenSHS), STM Nucleo, and AWS. (Purchase WiFi board and either a USB-to-USART adapter or USB node from Advantech depending on choice of OpenSHS or HomeI/O, in addition to pin and USB cables. Verify that the STM Nucleo is sufficient, since it is the weakest link of the project.)
 
 **Week 6** - Complete the software and hardware setup, and in consideration of the data structures, memory, latency, and the simulation API, design the imitation learning and/or reinforcement learning algorithm on AWS.
 

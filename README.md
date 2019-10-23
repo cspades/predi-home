@@ -30,7 +30,7 @@ To control/actuate the predictive model of the smart home and communicate data b
 
 **Week 8** - Extra time in case of delayed development, as well as prepare for the Demo.
 
-**Week 9** - Close the loop and code the smart home control algorithm that collects/processes data from the simulation, sends it to the Cloud (AWS), retrieves the adaptive/learned model, and control the smart home simulation.
+**Week 9** - Close the loop and code the smart home control algorithm that collects/processes data from the simulation, sends it to the Cloud (AWS), retrieves the adaptive/learned model, and control the smart home simulation. (Note that at this point of the project, I will have experience with communicating data between the simulation environment, the STM Nucleo, and AWS IoT/Sagemaker, and perhaps will have partially completed this step of the Project. Week 9 is the week to make sure it works well.)
 
 **Week 10** - Debug/optimize the control and ML algorithm(s), and prepare auxiliary materials (report, video, website, etc.) for the Project. Study the possibility of applying unsupervised learning on the training dataset to extract approximately unique smart home trajectories that the resident can use to customize the autonomy of the smart home.
 

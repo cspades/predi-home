@@ -18,7 +18,7 @@ To control/actuate the predictive model of the smart home and communicate data b
 
 **Connecting HomeI/O to STM Nucleo via ConnectI/O** - Node: https://buy.advantech.com/I-O-Devices-Communication/USB-IO-Modules-Multifunction-USB-Modules/model-USB-4704-AE.htm with Documentation: https://docs.realgames.co/connectio/usb-4704/
 
-**Apprenticeship Learning via Inverse RL** - https://ai.stanford.edu/~ang/papers/icml04-apprentice.pdf (Note: Educational motivation, and only if I choose to use RL. I will not be referencing the paper with complete generality of loss/reward function for inverse RL, since I have particular knowledge about the loss function I want to learn - the difference between the learned optimal trajectory and the trained policy-driven trajectory, which can be learned by canonical imitation learning. However, it covers some insightful topics pertaining to the relationship between inverse RL and RL.)
+**Apprenticeship Learning via Inverse RL** - https://ai.stanford.edu/~ang/papers/icml04-apprentice.pdf (Note: Educational motivation, and only if I choose to use RL, which in this context is the less optimal algorithm compared to imitation learning. I will not be referencing the paper with complete generality of loss/reward function for inverse RL, since I have particular knowledge about the loss function I want to learn - the difference between the learned optimal trajectory and the trained policy-driven trajectory, which can be learned by canonical imitation learning. However, it covers some insightful topics pertaining to the relationship between inverse RL and RL.)
 
 ## Development Timeline
 

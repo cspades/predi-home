@@ -2,7 +2,7 @@
 
 ## Abstract / Objective
 
-A Cloud AI-driven embedded system that learns the discretized time-series state trajectory of a smart home to predict and automate sequences of states and actions via behavioral cloning or reinforcement learning on human-computer/appliance interactions. In particular, a neural net trains on the time-domain state of the smart home either through imitation learning on the actions of the resident, or alternatively/time permitting, (inverse) reinforcement learning to learn a state-action control policy (via RL) driven by minimizing a "control-override" loss function representing differences in the policy trajectory and learned behavior of the resident (generated via imitation for inverse RL), and periodically (depending on the periodicity or frequency of the learned trajectory) update the smart home controller to reflect changes in the state trajectory of the smart home.
+A Cloud AI-driven embedded system that learns the discretized time-series state trajectory of a smart home to predict and automate sequences of states and actions via behavioral cloning or reinforcement learning on human-computer/appliance interactions. In particular, a neural net trains on the time-domain state of the smart home either through imitation learning on the actions of the resident, or alternatively/time permitting, (inverse) reinforcement learning to learn a state-action control policy (via RL) driven by minimizing a "control-override" loss function representing differences in the autonomous policy and learned behavior of the resident (generated via imitation for inverse RL), and periodically (depending on the periodicity or frequency of the learned trajectory) update the smart home controller to reflect changes in the predicted state trajectory or autonomous policy of the smart home.
 
 ## Project Specifications and Methodology
 
@@ -22,7 +22,7 @@ To control/actuate the predictive model of the smart home and process the traini
 
 ## Development Timeline
 
-**Week 5** - Set up the hardware and software platform for the system, with tests to communicate between PC (HomeIO/ConnectIO/OpenSHS), STM Nucleo, and AWS. (Purchase WiFi board and either a USB to USART adapter or USB node, in addition to cables. Verify that the STM Nucleo is sufficient, since it is the weakest link of the project.)
+**Week 5** - Set up the hardware and software platform for the system, with tests to communicate between PC (HomeIO/ConnectIO/OpenSHS), STM Nucleo, and AWS. (Purchase WiFi board and either a USB to USART adapter or USB node depending on OpenSHS or HomeI/O, in addition to pin and USB cables. Verify that the STM Nucleo is sufficient, since it is the weakest link of the project.)
 
 **Week 6** - Complete the software and hardware setup, and in consideration of the data structures, memory, latency, and the simulation API, design the imitation learning and/or reinforcement learning algorithm on AWS.
 

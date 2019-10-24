@@ -32,6 +32,6 @@ To control the features of and actuate the predicted trajectory of the smart hom
 
 **Week 9** - Close the loop and code the smart home control algorithm that collects/processes data from the simulation, sends it to the Cloud (AWS), retrieves the adaptive/learned trajectory, and control the smart home simulation. (Note that at this point of the project, I will have experience with communicating data between the simulation environment, the STM Nucleo, and AWS IoT/Sagemaker, and perhaps will have partially completed this step of the Project.)
 
-**Week 10** - Debug/optimize the control and ML algorithm(s), and prepare auxiliary materials (report, video, website, etc.) for the Project. Study the possibility of applying unsupervised learning and data summarization on the training dataset to extract approximately unique smart home trajectories that the resident uses to customize the autonomy of the smart home.
+**Week 10** - Debug/optimize the control and ML algorithm(s), and prepare auxiliary materials (report, video, website, etc.) for the Project. Study the possibility of applying unsupervised learning and data summarization on the training dataset to extract approximately unique trajectories that the resident uses to customize the autonomy of the smart home.
 
 **Finals Week** - Complete the Project and fork/clone the GitHub.

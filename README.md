@@ -8,7 +8,7 @@ In particular, a neural net or random forest trains on the time-domain state of 
 
 ## Project Specifications and Methodology
 
-To design and prototype the system, I utilize either Open Smart Home Simulator (OpenSHS - https://github.com/openshs/openshs) or HomeIO (https://realgames.co/home-io/) with ConnectIO (https://docs.realgames.co/connectio/) to simulate the operation and generate data for the trajectories of the smart home.
+To design and prototype the system, I utilize HomeIO (https://realgames.co/home-io/) with ConnectIO (https://docs.realgames.co/connectio/) to simulate the operation and generate data for the trajectories of the smart home.
 
 To control the features of and actuate the predicted trajectory of the smart home, as well as communicate data between the smart home simulation and the Cloud, I will utilize an STM Nucleo (https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-mpu-eval-tools/stm32-mcu-mpu-eval-tools/stm32-nucleo-boards/nucleo-f446re.html#overview) programmed via Mbed (https://www.mbed.com/en/) and connected to Amazon Web Services (https://aws.amazon.com/) to train an adaptive neural network or random forest that learns various time-domain functions for all the appliances/computers in the smart home via IoT and SageMaker.
 
@@ -24,7 +24,7 @@ To control the features of and actuate the predicted trajectory of the smart hom
 
 ## Development Timeline
 
-**Week 5** - Set up the hardware and software platform for the system, with tests to communicate between PC (HomeIO/ConnectIO/OpenSHS), STM Nucleo, and AWS IoT. (Purchase jumper/USB cables, a STM Nucleo WiFi Extension Board, and potentially an Advantech USB node depending on OpenSHS vs. Home/ConnectI/O.)
+**Week 5** - Set up the hardware and software platform for the system, with tests to communicate between PC (HomeIO/ConnectIO), STM Nucleo, and AWS IoT. (Purchase jumper/USB cables, a STM Nucleo WiFi Extension Board, and potentially an Advantech USB node depending on Home/ConnectI/O.)
 
 **Week 6** - Complete the software and hardware setup, and in consideration of the data structures, memory, latency, and the simulation API, design the imitation learning algorithm on AWS.
 

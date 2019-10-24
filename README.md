@@ -24,7 +24,7 @@ To control the features of and actuate the predicted trajectory of the smart hom
 
 ## Development Timeline
 
-**Week 5** - Set up the hardware and software platform for the system, with tests to communicate between PC (HomeIO/ConnectIO), STM Nucleo, and AWS IoT. (Purchase jumper/USB cables, a STM Nucleo WiFi Extension Board, and potentially an Advantech USB node depending on Home/ConnectI/O.)
+**Week 5** - Set up the hardware and software platform for the system, with tests to communicate between PC (HomeIO/ConnectIO), STM Nucleo, and AWS IoT. (Purchase jumper/USB cables, a STM Nucleo WiFi Extension Board, and an Advantech USB node to interface with Home/ConnectI/O.)
 
 **Week 6** - Complete the software and hardware setup, and in consideration of the data structures, memory, latency, and the simulation API, design the imitation learning algorithm on AWS.
 

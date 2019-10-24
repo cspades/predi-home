@@ -20,6 +20,8 @@ To control the features of and actuate the predicted trajectory of the smart hom
 
 **Connecting HomeI/O to STM Nucleo via ConnectI/O** - Node: https://buy.advantech.com/I-O-Devices-Communication/USB-IO-Modules-Multifunction-USB-Modules/model-USB-4704-AE.htm with Documentation: https://docs.realgames.co/connectio/usb-4704/
 
+**Smart Home Usage Statistics and Data** - TBD
+
 ## Development Timeline
 
 **Week 5** - Set up the hardware and software platform for the system, with tests to communicate between PC (HomeIO/ConnectIO/OpenSHS), STM Nucleo, and AWS IoT. (Purchase jumper/USB cables, a STM Nucleo WiFi Extension Board, and potentially an Advantech USB node depending on OpenSHS vs. Home/ConnectI/O.)

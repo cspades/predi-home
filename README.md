@@ -4,7 +4,7 @@
 
 A Cloud AI-driven embedded system that learns the discretized time-series state trajectory of a smart home to predict and autonomously operate various features included within the smart home via imitation/behavioral learning on human-computer/appliance interactions to improve the lifestyle and productivity of the resident(s) of the smart home.
 
-In particular, a neural net or random forest trains on the time-domain state trajectory of the controllable features of the smart home, and periodically (depending on the periodicity or frequency bandwidth of the learned trajectory) updates the autonomous smart home controller to reflect changes in the predicted state trajectory or autonomous policy of the smart home, with minimal guidance from or interaction with the resident(s) of the smart home. To control or limit the predictive autonomy of the smart home, an unsupervised algorithm (i.e., a dynamic k-means classifier) will classify and differentiate the training dataset of the imitation learning algorithm in order to group together approximately equivalent trajectories into classes of activities that can be flexibly activated or deactivated in the training of the smart home controller.
+In particular, a neural net or XGBoost trains on the time-domain state trajectory of the controllable features of the smart home, and periodically (depending on the periodicity or frequency bandwidth of the learned trajectory) updates the autonomous smart home controller to reflect changes in the predicted state trajectory or autonomous policy of the smart home, with minimal guidance from or interaction with the resident(s) of the smart home. To control or limit the predictive autonomy of the smart home, an unsupervised algorithm (i.e., a dynamic k-means classifier) will classify and differentiate the training dataset of the imitation learning algorithm in order to group together approximately equivalent trajectories into classes of activities that can be flexibly activated or deactivated in the training of the smart home controller.
 
 ## Project Objectives
 
@@ -12,7 +12,7 @@ In particular, a neural net or random forest trains on the time-domain state tra
 
 2) Optimize (as a function of the number of controllable features, the temporal granularity, and the distance between heuristically-distinct trajectories) the amount of time and computation necessary for the machine learning model to functionally adapt to changes in activity patterns of various complexity in the smart home. Alternatively, minimize human override/intervention during training/adaptation. Analyze trade-off between adaptation rate and predictive accuracy, which are dependent on the capacity/diversity of the training dataset, of the algorithm and controller.
 
-3) Design and implement an efficient unsupervised learning algorithm that differentiates smart home trajectory data into classes of trajectories that the smart home resident(s) can activate or deactivate, to rapidly adjust or limit the training and autonomy of the smart home.
+3) Design and implement an efficient unsupervised learning algorithm that approximately differentiates smart home trajectory data into classes of trajectories that the smart home resident(s) can activate or deactivate, to rapidly adjust or limit the training and autonomy of the smart home.
 
 ## Project Specifications and Methodology
 

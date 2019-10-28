@@ -50,13 +50,13 @@ AWS models are probably not deployable on the STM Nucleo. Send control commands 
 
 **Week 5** - Initiate setup for the hardware and software platforms of the system, with tests to communicate between PC (HomeIO/ConnectIO), STM Nucleo, and AWS IoT. Purchase jumper/USB cables, a STM Nucleo WiFi Extension Board, and an Advantech USB node to interface with Home/ConnectI/O.
 
-**Week 6** - Complete the software and hardware setup, design the smart home controller on the Nucleo/Mbed, and in consideration of the data structures, memory, latency, and the simulation API, design the imitation learning algorithm on AWS.
+**Week 6** - Complete the software and hardware setup, program the smart home controller on the Nucleo/Mbed, and in consideration of the data structures, memory, communication latency, and the simulation API, initiate design of the imitation learning regression algorithm on AWS Sagemaker.
 
-**Week 7** - Design and code the ML algorithm on AWS, and test/visualize it by training on simulated/generated trajectories of the smart home derived/sourced from reputable smart home usage databases or behavioral statistics (WSU CASAS).
+**Week 7** - Design and code the imitation learning regression algorithm on AWS Sagemaker, and test/visualize it by training on simulated/generated trajectories of the smart home derived/sourced from reputable smart home usage databases or behavioral statistics (WSU CASAS).
 
 **Week 8** - Extra time in case of delayed development, as well as prepare for the Demo.
 
-**Week 9** - Close the loop and program the smart home control algorithm that collects/processes data from the simulation, sends it to the Cloud (AWS), retrieves the adaptive/learned trajectory, and control the smart home simulation.
+**Week 9** - Close the loop and program the smart home control algorithm that collects/processes data from the simulation (Home/Connect-I/O), sends it to the Cloud (AWS IoT), retrieves the adaptive/learned trajectory (AWS Sagemaker), and control the smart home simulation (STM Nucleo).
 
 **Week 10** - Debug/optimize the control and ML algorithm(s), and prepare auxiliary materials (report, video, website, etc.) for the Project. Study the possibility of applying unsupervised learning and data summarization on the training dataset to extract approximately unique trajectories that the resident uses to customize the autonomy of the smart home.
 

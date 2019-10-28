@@ -40,7 +40,7 @@ To control the features of and actuate the predicted trajectory of the smart hom
 
 ## Notebook
 
-AWS models are probably not deployable on the STM Nucleo. Either use AWS as a host that sends commands to the Nucleo, or write a custom scikit-learn or TensorFlow model with parameters that are trained on AWS.
+AWS models are probably not deployable on the STM Nucleo. Send control commands to the Nucleo via AWS.
 
 ## Development Timeline
 

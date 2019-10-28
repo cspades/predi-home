@@ -48,9 +48,9 @@ AWS models are not deployable on the Nucleo. Send control commands to the Nucleo
 
 ## Development Timeline
 
-**Week 5** - Initiate setup for the hardware and software platforms of the system, with tests to communicate between PC (HomeIO/ConnectIO), STM Nucleo, and AWS IoT. Purchase jumper/USB cables, a STM Nucleo WiFi Extension Board, and an Advantech USB node to interface with Home/ConnectI/O.
+**Week 5** - Initiate setup for the hardware and software platforms of the system, with tests to communicate between PC (HomeIO/ConnectIO), STM Nucleo, and AWS IoT.
 
-**Week 6** - Complete the software and hardware setup, program the smart home controller on the Nucleo/Mbed, and in consideration of the data structures, memory, communication latency, and the simulation API, initiate design of the imitation learning regression algorithm on AWS Sagemaker.
+**Week 6** - Complete the software and hardware setup, program the smart home controller on the Nucleo/Mbed, and in consideration of the data structures, memory, communication latency, and the simulation API, roughly design the imitation learning regression algorithm on AWS Sagemaker.
 
 **Week 7** - Design and code the imitation learning regression algorithm on AWS Sagemaker, and test/visualize it by training on simulated/generated trajectories of the smart home derived/sourced from reputable smart home usage databases or behavioral statistics (WSU CASAS).
 

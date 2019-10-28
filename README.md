@@ -22,7 +22,7 @@ To control the features of and actuate the predicted trajectory of the smart hom
 
 ## Tech & Resources
 
-**Project Website** - https://cspades.github.io/predi-home/
+**Project Website** - (https://cspades.github.io/predi-home/)
 
 **STM Nucleo Development Board with Mbed OS** - [STM Nucleo F446RE](https://os.mbed.com/platforms/NUCLEO-L433RC-P/)
 

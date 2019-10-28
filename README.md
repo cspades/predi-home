@@ -4,7 +4,7 @@
 
 A Cloud AI-driven embedded system that learns the discretized time-series state trajectory of a smart home to predict and autonomously operate various features included within the smart home via imitation/behavioral learning on human-computer/appliance interactions to improve the lifestyle and productivity of the resident(s) of the smart home.
 
-In particular, a linear regressor, neural net, or XGBoost trains on the time-domain state trajectory of the controllable features of the smart home, and periodically (depending on the periodicity or frequency bandwidth of the learned trajectory) updates the autonomous smart home controller model to reflect changes in the predicted state trajectory or autonomous policy of the smart home, with minimal guidance from or interaction with the resident(s) of the smart home. To control or limit the predictive autonomy of the smart home, an unsupervised algorithm (i.e., a dynamic k-means classifier) will classify and differentiate the training dataset of the imitation learning algorithm in order to group together approximately equivalent trajectories into classes of activities that can be flexibly activated or deactivated in the training of the smart home controller.
+In particular, an SVM, neural net, or XGBoost trains on the time-domain state trajectory of the controllable features of the smart home, and periodically (depending on the periodicity or frequency bandwidth of the learned trajectory) updates the autonomous smart home controller model to reflect changes in the predicted state trajectory or autonomous policy of the smart home, with minimal guidance from or interaction with the resident(s) of the smart home. To control or limit the predictive autonomy of the smart home, an unsupervised algorithm (i.e., a dynamic k-means classifier) will classify and differentiate the training dataset of the imitation learning algorithm in order to group together approximately equivalent trajectories into classes of activities that can be flexibly activated or deactivated in the training of the smart home controller.
 
 ## Project Objectives
 
@@ -37,6 +37,10 @@ To control the features of and actuate the predicted trajectory of the smart hom
 **Connecting HomeI/O to STM Nucleo via ConnectI/O** - [Advantech DAQ USB Node](https://buy.advantech.com/I-O-Devices-Communication/USB-IO-Modules-Multifunction-USB-Modules/model-USB-4704-AE.htm) with [Documentation](https://docs.realgames.co/connectio/usb-4704/)
 
 **Smart Home Usage Statistics and Data** - [WSU CASAS Database](http://casas.wsu.edu/datasets/)
+
+## Notebook
+
+AWS models are probably not deployable on the STM Nucleo. Either use AWS as a host that sends commands to the Nucleo, or write a custom SVM with parameters that are trained on AWS.
 
 ## Development Timeline
 

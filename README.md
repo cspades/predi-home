@@ -44,7 +44,7 @@ TODO
 
 ## Development Notebook
 
-AWS models are probably not deployable on the STM Nucleo. Send control commands to the Nucleo via AWS.
+AWS models are not deployable on the Nucleo. Send control commands to the Nucleo via AWS IoT.
 
 ## Development Timeline
 

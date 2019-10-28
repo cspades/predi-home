@@ -10,7 +10,7 @@ In particular, a neural net or random forest trains on the time-domain state tra
 
 1) Design and implement a smart home control algorithm that collects sufficient data on realistically-simulated periodic activities in smart home, trains a machine learning model to predict the probabilistically-optimal trajectory of features in the smart home, and controls the smart home autonomously.
 
-2) Optimize (as a function of the number of controllable features, the temporal granularity, and the distance between trajectories) the amount of time and computation necessary for the machine learning model to functionally adapt to changes in activity patterns of various complexity in the smart home. Alternatively, minimize human override/intervention during training/adaptation.
+2) Optimize (as a function of the number of controllable features, the temporal granularity, and the distance between heuristically-distinct trajectories) the amount of time and computation necessary for the machine learning model to functionally adapt to changes in activity patterns of various complexity in the smart home. Alternatively, minimize human override/intervention during training/adaptation.
 
 3) Design and implement an efficient unsupervised learning algorithm that differentiates smart home trajectory data into classes of trajectories that the smart home resident(s) can activate or deactivate, to rapidly adjust or limit the training and autonomy of the smart home.
 

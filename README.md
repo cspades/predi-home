@@ -48,15 +48,15 @@ AWS models are probably not deployable on the STM Nucleo. Send control commands 
 
 ## Development Timeline
 
-**Week 5** - Set up the hardware and software platform for the system, with tests to communicate between PC (HomeIO/ConnectIO), STM Nucleo, and AWS IoT. (Purchase jumper/USB cables, a STM Nucleo WiFi Extension Board, and an Advantech USB node to interface with Home/ConnectI/O.)
+**Week 5** - Initiate setup for the hardware and software platforms of the system, with tests to communicate between PC (HomeIO/ConnectIO), STM Nucleo, and AWS IoT. Purchase jumper/USB cables, a STM Nucleo WiFi Extension Board, and an Advantech USB node to interface with Home/ConnectI/O.
 
-**Week 6** - Complete the software and hardware setup, and in consideration of the data structures, memory, latency, and the simulation API, design the imitation learning algorithm on AWS.
+**Week 6** - Complete the software and hardware setup, design the smart home controller on the Nucleo/Mbed, and in consideration of the data structures, memory, latency, and the simulation API, design the imitation learning algorithm on AWS.
 
-**Week 7** - Design and code the ML algorithm on AWS, and test/visualize it by training on simulated/generated trajectories of the smart home derived/sourced from reputable smart home usage databases or behavioral research.
+**Week 7** - Design and code the ML algorithm on AWS, and test/visualize it by training on simulated/generated trajectories of the smart home derived/sourced from reputable smart home usage databases or behavioral statistics (WSU CASAS).
 
 **Week 8** - Extra time in case of delayed development, as well as prepare for the Demo.
 
-**Week 9** - Close the loop and code the smart home control algorithm that collects/processes data from the simulation, sends it to the Cloud (AWS), retrieves the adaptive/learned trajectory, and control the smart home simulation. (Note that at this point of the project, I will have experience with communicating data between the simulation environment, the STM Nucleo, and AWS IoT/Sagemaker, and perhaps will have partially completed this step of the Project.)
+**Week 9** - Close the loop and program the smart home control algorithm that collects/processes data from the simulation, sends it to the Cloud (AWS), retrieves the adaptive/learned trajectory, and control the smart home simulation. Note that at this point of the project, I will have experience with communicating data between the simulation environment, the STM Nucleo, and AWS IoT/Sagemaker, and perhaps will have partially completed this step of the Project.
 
 **Week 10** - Debug/optimize the control and ML algorithm(s), and prepare auxiliary materials (report, video, website, etc.) for the Project. Study the possibility of applying unsupervised learning and data summarization on the training dataset to extract approximately unique trajectories that the resident uses to customize the autonomy of the smart home.
 

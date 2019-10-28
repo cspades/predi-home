@@ -38,11 +38,11 @@ To control the features of and actuate the predicted trajectory of the smart hom
 
 **Smart Home Usage Statistics and Data** - [WSU CASAS Database](http://casas.wsu.edu/datasets/)
 
-### Prior Work in Smart Home Automation and Machine Learning
+## Prior Work in Smart Home Automation and Machine Learning
 
 TODO
 
-## Notebook
+## Development Notebook
 
 AWS models are probably not deployable on the STM Nucleo. Send control commands to the Nucleo via AWS.
 

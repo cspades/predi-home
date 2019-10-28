@@ -54,4 +54,4 @@ To control the features of and actuate the predicted trajectory of the smart hom
 
 **Finals Week** - Complete the Project and fork/clone the GitHub.
 
-Developed by Cory Ye, for the course ECE M202A at UCLA
+**Developed by Cory Ye, for the embedded systems course ECE M202A at UCLA**

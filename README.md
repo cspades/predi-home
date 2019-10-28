@@ -26,7 +26,7 @@ To control the features of and actuate the predicted trajectory of the smart hom
 
 **Connecting the STM Nucleo to AWS IoT** - [Tutorial](https://github.com/Klika-Tech/nucleo-aws-iot-demo/blob/master/doc/NUCLEO.md) with the [STM Nucleo WiFi Expansion Board](https://www.digikey.com/product-detail/en/stmicroelectronics/X-NUCLEO-IDW04A1/497-17209-ND/7056814)
 
-**HomeI/O and ConnectI/O** - https://realgames.co/home-io/ and https://docs.realgames.co/connectio/
+**HomeI/O and ConnectI/O** - [HomeIO](https://realgames.co/home-io/) with [ConnectIO](https://docs.realgames.co/connectio/)
 
 **Connecting HomeI/O to STM Nucleo via ConnectI/O** - [Advantech DAQ Node](https://buy.advantech.com/I-O-Devices-Communication/USB-IO-Modules-Multifunction-USB-Modules/model-USB-4704-AE.htm) with [Documentation](https://docs.realgames.co/connectio/usb-4704/)
 

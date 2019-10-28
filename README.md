@@ -30,7 +30,7 @@ To control the features of and actuate the predicted trajectory of the smart hom
 
 **Connecting HomeI/O to STM Nucleo via ConnectI/O** - [Advantech DAQ Node](https://buy.advantech.com/I-O-Devices-Communication/USB-IO-Modules-Multifunction-USB-Modules/model-USB-4704-AE.htm) with [Documentation](https://docs.realgames.co/connectio/usb-4704/)
 
-**Smart Home Usage Statistics and Data** - TBD
+**Smart Home Usage Statistics and Data** - [WSU CASAS Database](http://casas.wsu.edu/datasets/)
 
 ## Development Timeline
 

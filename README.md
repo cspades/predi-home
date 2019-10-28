@@ -66,4 +66,4 @@ AWS models are not deployable on the Nucleo. Send control commands to the Nucleo
 
 **Finals Week** - Complete the Project and fork/clone the GitHub.
 
-**Developed by Cory Ye, for the embedded systems course ECE M202A at UCLA**
+**Developed by Cory Ye, for the embedded systems course ECE M202A at UCLA.**

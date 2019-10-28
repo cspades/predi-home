@@ -38,6 +38,8 @@ To control the features of and actuate the predicted trajectory of the smart hom
 
 **Smart Home Usage Statistics and Data** - [WSU CASAS Database](http://casas.wsu.edu/datasets/)
 
+**TensorFlow and Keras** - [TensorFlow](https://www.tensorflow.org/) and [Keras](https://www.tensorflow.org/guide/keras)
+
 ## Prior Work in Smart Home Automation and Machine Learning
 
 TODO

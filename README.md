@@ -16,7 +16,7 @@ In particular, a neural net or random forest trains on the time-domain state tra
 
 ## Project Specifications and Methodology
 
-To design and prototype the system, I utilize [HomeIO](https://realgames.co/home-io/) with [ConnectIO]https://docs.realgames.co/connectio/) to simulate the operation and generate data for the trajectories of the smart home.
+To design and prototype the system, I utilize [HomeIO](https://realgames.co/home-io/) with [ConnectIO](https://docs.realgames.co/connectio/) to simulate the operation and generate data for the trajectories of the smart home.
 
 To control the features of and actuate the predicted trajectory of the smart home, as well as communicate data between the smart home simulation and the Cloud, I will utilize an [STM Nucleo F446RE](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-mpu-eval-tools/stm32-mcu-mpu-eval-tools/stm32-nucleo-boards/nucleo-f446re.html#overview) programmed via [Mbed](https://www.mbed.com/en/) and connected to [Amazon Web Services](https://aws.amazon.com/) to train an adaptive neural network or random forest that learns various time-domain functions for all the appliances/computers in the smart home via IoT and SageMaker.
 

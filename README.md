@@ -24,9 +24,9 @@ To control the features of and actuate the predicted trajectory of the smart hom
 
 **Project Website** - https://cspades.github.io/predi-home/
 
-**STM Nucleo Development Board** - [STM Nucleo F446RE](https://os.mbed.com/platforms/NUCLEO-L433RC-P/)
+**STM Nucleo Development Board with Mbed OS** - [STM Nucleo F446RE](https://os.mbed.com/platforms/NUCLEO-L433RC-P/)
 
-**Mbed** - [ARM Mbed IDE](https://www.mbed.com/en/)
+**Mbed** - [ARM Mbed Online IDE](https://www.mbed.com/en/)
 
 **Amazon Web Services** - [AWS IoT](https://aws.amazon.com/iot-core/?hp=tile&so-exp=below) and [AWS Sagemaker](https://aws.amazon.com/sagemaker/?hp=tile&so-exp=below)
 

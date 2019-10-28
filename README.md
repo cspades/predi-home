@@ -53,3 +53,5 @@ To control the features of and actuate the predicted trajectory of the smart hom
 **Week 10** - Debug/optimize the control and ML algorithm(s), and prepare auxiliary materials (report, video, website, etc.) for the Project. Study the possibility of applying unsupervised learning and data summarization on the training dataset to extract approximately unique trajectories that the resident uses to customize the autonomy of the smart home.
 
 **Finals Week** - Complete the Project and fork/clone the GitHub.
+
+Developed by Cory Ye, for the course ECE M202A at UCLA

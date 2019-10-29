@@ -44,7 +44,9 @@ To control the features of and actuate the predicted trajectory of the smart hom
 
 ## Prior Work in Smart Home Automation and Machine Learning
 
-TODO
+1) [IEEE Review of Smart Homes - Past, Present, and Future (2012)](https://ieeexplore.ieee.org/document/6177682)
+
+2) [CASAS: A Smart Home in a Box](https://ieeexplore.ieee.org/abstract/document/6313586) - CASAS Activity Recognition and Predictive Automation
 
 ## Development Notebook
 

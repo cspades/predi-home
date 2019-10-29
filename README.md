@@ -48,6 +48,10 @@ To control the features of and actuate the predicted trajectory of the smart hom
 
 2) [CASAS: A Smart Home in a Box (2013)](https://ieeexplore.ieee.org/abstract/document/6313586) - CASAS Activity Recognition and Activity-Specific Predictive Automation
 
+3) [An Unsupervised User Behavior Prediction Algorithm Based on Machine Learning and Neural Network For Smart Home](https://ieeexplore.ieee.org/document/8458105)
+
+These three papers provide a relatively comprehensive overview of smart home technology augmented with machine learning. Most practical applications of smart home predictive automation utilize unsupervised learning to analyze a dataset for approximately similar trajectories or sequences/patterns that can be applied to smart home control policies. Not many distinctions are made about how such information is used, so we can assume that the implementation of the policy is application-specific, either actuated with information from human-computer interfaces, deterministically programmed on a case-by-case basis, and/or autonomously induced and generalized through optimization or machine learning.
+
 ## Development Notebook
 
 AWS models are not deployable on the Nucleo. Send control commands to the Nucleo via AWS IoT.

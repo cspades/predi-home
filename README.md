@@ -24,7 +24,7 @@ To design and prototype the system, I utilize [HomeIO](https://realgames.co/home
 
 To control the features of and actuate the predicted trajectory of the smart home, as well as communicate data between the smart home simulation and the Cloud, I will utilize an [STM Nucleo 32F446RE](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-mpu-eval-tools/stm32-mcu-mpu-eval-tools/stm32-nucleo-boards/nucleo-f446re.html#overview) programmed via [Mbed IDE](https://www.mbed.com/en/) and connected to [Amazon Web Services](https://aws.amazon.com/) to train an adaptive neural network that learns various control policies for all the appliances/computers in the smart home via [IoT](https://aws.amazon.com/iot-core/?hp=tile&so-exp=below) and [SageMaker](https://aws.amazon.com/sagemaker/?hp=tile&so-exp=below).
 
-TODO - Imitation Learning - Training on data (with epoch = 1 and a fixed learning rate on a periodically-retrieved batch of data) in the state-transition form <img src="/tex/46be24a0d958ee8e99d747a8dd1b6ea5.svg?invert_in_darkmode&sanitize=true" align=middle width=108.63268844999999pt height=29.789954700000024pt/> to learn a control policy. Learning algorithm summary:
+**TODO** - Imitation Learning - Training on data (with epoch = 1 and a fixed learning rate on a periodically-retrieved batch of data) in the state-transition form <img src="/tex/46be24a0d958ee8e99d747a8dd1b6ea5.svg?invert_in_darkmode&sanitize=true" align=middle width=108.63268844999999pt height=29.789954700000024pt/> to learn a control policy. Learning algorithm summary:
 
 1) Apply current prediction policy at the state <img src="/tex/4389550a116a2af0c3833b5131a6032a.svg?invert_in_darkmode&sanitize=true" align=middle width=12.67127234999999pt height=14.15524440000002pt/> to actuate the predicted state <img src="/tex/b02dd36b8a10566f2a0ad9cbb2e74858.svg?invert_in_darkmode&sanitize=true" align=middle width=29.31519194999999pt height=14.15524440000002pt/>.
 2) Wait until the following time-step.
@@ -34,9 +34,9 @@ TODO - Imitation Learning - Training on data (with epoch = 1 and a fixed learnin
 
 Input is the smart home state (controllable smart home features and relevant environment states like temperature or time), while output is the smart home feature component of the state (as the environment and time are either only controllable in a control-theoretical sense or not controllable by the smart home).
 
-TODO - Adaptive Control - Analyze convergence of the policy for changes in human behavior, which can be interpreted as a trajectory/policy-tracking problem with sample error/loss on a stochastic process. Generate two different classes of changed sequences/trajectories: a (small) proper subset of a trajectory is persistently perturbed, or the entire trajectory is persistently changed, and analyze when the policy reaches steady state (when the error is minimized and does not significantly change from any further training updates).
+**TODO** - Adaptive Control - Analyze convergence of the policy for changes in human behavior, which can be interpreted as a trajectory/policy-tracking problem with sample error/loss on a stochastic process. Generate two different classes of changed sequences/trajectories: a (small) proper subset of a trajectory is persistently perturbed, or the entire trajectory is persistently changed, and analyze when the policy reaches steady state (when the error is minimized and does not significantly change from any further training updates).
 
-TODO - Unsupervised Learning - Clustering on data in the time-series form <img src="/tex/519c52325df920d2512a1dc8ca2b2c44.svg?invert_in_darkmode&sanitize=true" align=middle width=51.54129914999999pt height=27.6567522pt/> to classify state trajectories.
+**TODO** - Unsupervised Learning - Clustering on data in the time-series form <img src="/tex/519c52325df920d2512a1dc8ca2b2c44.svg?invert_in_darkmode&sanitize=true" align=middle width=51.54129914999999pt height=27.6567522pt/> to classify state trajectories.
 
 ## Tech & Resources
 

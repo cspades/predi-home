@@ -34,7 +34,7 @@ TODO - Imitation Learning - Training on data (with epoch = 1 and a fixed learnin
 
 Input is the smart home state (controllable smart home features and relevant environment states like temperature or time), while output is the smart home feature component of the state (as the environment and time are either only controllable in a control-theoretical sense or not controllable by the smart home).
 
-TODO - Adaptive Control - Analyze convergence of the policy for changes in human behavior, which can be interpreted as a trajectory/policy-tracking problem with sample error/loss on a stochastic process (to minimize the expectation of error). Generate 2 different classes of changed sequences/trajectories: 1) a (small) proper subset of a trajectory is persistently perturbed, and 2) the entire trajectory is persistently changed, and analyze when the policy reaches steady state (when the error is minimized and does not significantly change from any further training updates).
+TODO - Adaptive Control - Analyze convergence of the policy for changes in human behavior, which can be interpreted as a trajectory/policy-tracking problem with sample error/loss on a stochastic process. Generate two different classes of changed sequences/trajectories: a (small) proper subset of a trajectory is persistently perturbed, or the entire trajectory is persistently changed, and analyze when the policy reaches steady state (when the error is minimized and does not significantly change from any further training updates).
 
 TODO - Unsupervised Learning - Clustering on data in the time-series form $\{s_t\}_{t=1}^{N}$ to classify state trajectories.
 

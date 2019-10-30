@@ -56,7 +56,7 @@ These three papers provide a relatively comprehensive overview of smart home tec
 
 AWS models are not deployable on the Nucleo. Send control commands to the Nucleo via AWS IoT.
 
-Observe that the imitation learning problem is structured intuitively as a reinforcement learning problem, except there does not exist an optimal reward/loss function as the environment (human decision making) is unpredictable and consequently non-observable. However, learning the state-dependent control policy rather than a single optimal state trajectory will exceptionally improve the versatility and flexibility of the imitation learning model to sequential decision making and adaptation.
+Observe that the imitation learning problem searches for a state-dependent control policy rather than a single optimal state trajectory, because control policies exceptionally improve the versatility and flexibility of the imitation learning model to sequential decision making and adaptation.
 
 ## Development Timeline
 

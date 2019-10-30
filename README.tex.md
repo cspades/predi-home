@@ -24,7 +24,7 @@ To control the features of and actuate the predicted trajectory of the smart hom
 
 TODO - Imitation Learning - Training on data in the state-transition form $\{(s_t, s_{t+1})\}_{t=1}^{N-1}$ to learn a control policy.
 
-TODO - Unsupervised Learning - Clustering on data in the time-series form $\{s_t\}_{t=1}^{N}$ to classify and group similar state trajectories.
+TODO - Unsupervised Learning - Clustering on data in the time-series form $\{s_t\}_{t=1}^{N}$ to classify state trajectories.
 
 ## Tech & Resources
 

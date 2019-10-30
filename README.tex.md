@@ -10,11 +10,11 @@ In particular, a neural net trains on the sequence of states $\{s_t\}_{t=1}^{N}$
 
 ## Project Objectives
 
-1) Design and implement a smart home control algorithm that collects sufficient data on realistically-simulated periodic activities in the smart home, trains a imitation learning model in real-time to learn a predictive control decision policy for the state of features in the smart home via trial-and-error with respect to a loss function $L(s_{\text{pred}},s_{\text{actual}})$, and applies the policy to control the smart home autonomously.
+1) **Imitation Learning** - Design and implement a smart home control algorithm that collects sufficient data on realistically-simulated periodic activities in the smart home, trains a imitation learning model in real-time to learn a predictive control decision policy for the state of features in the smart home via trial-and-error with respect to a loss function $L(s_{\text{pred}},s_{\text{actual}})$, and applies the policy to control the smart home autonomously.
 
-2) Optimize (as a function of the number of controllable features, the temporal granularity, and the distance between heuristically-distinct trajectories) the amount of time and computation necessary for the imitation learning model to functionally adapt to changes in activity patterns of various complexity in the smart home. Analyze trade-off between adaptation rate and predictive accuracy (calculated via regularly integrating the loss function of the imitation learning model over a fixed interval of time, intuitively based on conflicts between the prediction and human override/intervention), which depends on the learning rate of algorithm and controller.
+2) **Adaptive Control** - Optimize (as a function of the number of controllable features, the temporal granularity, and the distance between heuristically-distinct trajectories) the amount of time and computation necessary for the imitation learning model to functionally adapt to changes in activity patterns of various complexity in the smart home. Analyze trade-off between adaptation rate and predictive accuracy (calculated via regularly integrating the loss function of the imitation learning model over a fixed interval of time, intuitively based on conflicts between the prediction and human override/intervention), which depends on the learning rate of algorithm and controller.
 
-3) Time permitting, design and implement an efficient unsupervised learning algorithm that approximately differentiates smart home trajectory data into classes of trajectories for a checkpoint subset of past training data of fixed size N. Such information is summarized for the smart home resident(s), who can manually activate or deactivate specific classes of trajectories in the training data or adjust the optimal trajectory relative to activated/deactivated trajectories in order to rapidly adjust the training set or control the autonomy of the smart home. Analyze the impact re-training the imitation learning algorithm on a checkpoint subset has on the performance (modulo the deactivated component) of the imitation decision policy as a function of the checkpoint training memory N.
+3) **Unsupervised Learning/Clustering** - Time permitting, design and implement an efficient unsupervised learning algorithm that approximately differentiates smart home trajectory data into classes of trajectories for a checkpoint subset of past training data of fixed size N. Such information is summarized for the smart home resident(s), who can manually activate or deactivate specific classes of trajectories in the training data or adjust the optimal trajectory relative to activated/deactivated trajectories in order to rapidly adjust the training set or control the autonomy of the smart home. Analyze the impact re-training the imitation learning algorithm on a checkpoint subset has on the performance (modulo the deactivated component) of the imitation decision policy as a function of the checkpoint training memory N.
 
 ## Project Specifications and Methodology
 
@@ -22,7 +22,9 @@ To design and prototype the system, I utilize [HomeIO](https://realgames.co/home
 
 To control the features of and actuate the predicted trajectory of the smart home, as well as communicate data between the smart home simulation and the Cloud, I will utilize an [STM Nucleo 32F446RE](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-mpu-eval-tools/stm32-mcu-mpu-eval-tools/stm32-nucleo-boards/nucleo-f446re.html#overview) programmed via [Mbed IDE](https://www.mbed.com/en/) and connected to [Amazon Web Services](https://aws.amazon.com/) to train an adaptive neural network that learns various control policies for all the appliances/computers in the smart home via [IoT](https://aws.amazon.com/iot-core/?hp=tile&so-exp=below) and [SageMaker](https://aws.amazon.com/sagemaker/?hp=tile&so-exp=below).
 
-TODO - Imitation Learning - Training on data in the state-transition form $\{(s_t, s_{t+1})\}_{t=1}^{N-1}$ to learn a control policy.
+TODO - Imitation Learning - Training on data (with epoch = 1 and a fixed learning rate) in the state-transition form $\{(s_t, s_{t+1})\}_{t=1}^{N-1}$ to learn a control policy.
+
+TODO - Adaptive Control - Analyze convergence of the policy for changes in human behavior, which can be interpreted as a trajectory/policy-tracking problem with sample loss on a stochastic process.
 
 TODO - Unsupervised Learning - Clustering on data in the time-series form $\{s_t\}_{t=1}^{N}$ to classify state trajectories.
 
@@ -60,7 +62,9 @@ These three papers provide a relatively comprehensive overview of smart home tec
 
 AWS models are not deployable on the Nucleo. Send control commands to the Nucleo via AWS IoT.
 
-Observe that the imitation learning problem searches for a state-dependent control policy rather than a single optimal state trajectory, because control policies exceptionally improve the versatility and flexibility of the imitation learning model to sequential decision making and adaptation.
+Opted to have the imitation learning problem search for a state-dependent control policy rather than a single optimal state trajectory, because control policies exceptionally improve the versatility and flexibility of the imitation learning model to sequential decision making and adaptation.
+
+Observe that the imitation learning objective focuses on learning a general policy for the smart home, while the adaptive control objective focuses on the convergence of the model to a changed policy. Both are important in the autonomous performance of a smart home, because the former will determine an optimal policy minimize prediction errors for unprecedented sequences of states, while the latter will optimize how quickly such a policy is determined.
 
 ## Development Timeline
 

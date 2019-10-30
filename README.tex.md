@@ -74,6 +74,6 @@ AWS models are not deployable on the Nucleo. Send control commands to the Nucleo
 
 ## Future Work
 
-Re-training a neural net is not particularly efficient. Is it possible to efficiently un-train a neural net, perhaps via generating data that counteracts the impact of training on a set of data?
+Re-training a neural net is not particularly efficient. Is it possible to efficiently un-train a neural net, perhaps via generating data that counteracts the impact of training on a set of data? 
 
 **Developed by Cory Ye, for the embedded systems course ECE M202A at UCLA.**

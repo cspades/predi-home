@@ -72,4 +72,8 @@ AWS models are not deployable on the Nucleo. Send control commands to the Nucleo
 
 **Finals Week** - Complete the Project and fork/clone the GitHub.
 
+## Future Work
+
+Reinforcement learning is another possible implementation of predi-home. However, reinforced learning models cannot be efficiently un-trained compared to deleting a subset of training data from the imitation learning model. An interesting concept is the possibility of accelerating reinforcement un-learning for predictive smart homes.
+
 **Developed by Cory Ye, for the embedded systems course ECE M202A at UCLA.**

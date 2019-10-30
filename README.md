@@ -22,9 +22,9 @@ To design and prototype the system, I utilize [HomeIO](https://realgames.co/home
 
 To control the features of and actuate the predicted trajectory of the smart home, as well as communicate data between the smart home simulation and the Cloud, I will utilize an [STM Nucleo 32F446RE](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-mpu-eval-tools/stm32-mcu-mpu-eval-tools/stm32-nucleo-boards/nucleo-f446re.html#overview) programmed via [Mbed IDE](https://www.mbed.com/en/) and connected to [Amazon Web Services](https://aws.amazon.com/) to train an adaptive neural network that learns various control policies for all the appliances/computers in the smart home via [IoT](https://aws.amazon.com/iot-core/?hp=tile&so-exp=below) and [SageMaker](https://aws.amazon.com/sagemaker/?hp=tile&so-exp=below).
 
-TODO - Imitation Learning Algorithm Design (prev_state -> next_state)
+TODO - Imitation Learning - Training on data in the state-transition form <img src="/tex/9234103fca77aa6cb932e94c8a4a3da7.svg?invert_in_darkmode&sanitize=true" align=middle width=92.19426314999998pt height=32.255810399999994pt/> to learn a control policy.
 
-TODO - Unsupervised Learning Clustering Design (time-series clustering)
+TODO - Unsupervised Learning - Clustering on data in the time-series form <img src="/tex/4713efd14810a961175d6eacb2585c5a.svg?invert_in_darkmode&sanitize=true" align=middle width=35.10288044999999pt height=27.6567522pt/> to classify and group similar state trajectories.
 
 ## Tech & Resources
 

@@ -25,11 +25,13 @@ To design and prototype the system, I utilize [HomeIO](https://realgames.co/home
 To control the features of and actuate the predicted trajectory of the smart home, as well as communicate data between the smart home simulation and the Cloud, I will utilize an [STM Nucleo 32F446RE](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-mpu-eval-tools/stm32-mcu-mpu-eval-tools/stm32-nucleo-boards/nucleo-f446re.html#overview) programmed via [Mbed IDE](https://www.mbed.com/en/) and connected to [Amazon Web Services](https://aws.amazon.com/) to train an adaptive neural network that learns various control policies for all the appliances/computers in the smart home via [IoT](https://aws.amazon.com/iot-core/?hp=tile&so-exp=below) and [SageMaker](https://aws.amazon.com/sagemaker/?hp=tile&so-exp=below).
 
 TODO - Imitation Learning - Training on data (with epoch = 1 and a fixed learning rate on a periodically-retrieved batch of data) in the state-transition form $\{(s_t, s_{t+1})\}_{t=1}^{N-1}$ to learn a control policy. Learning algorithm summary:
-**(1)** Apply current prediction policy at the state $s_{t}$ to actuate the predicted state $s_{t+1}$.
-**(2)** Wait until the following time-step.
-**(3)** Observe if the state has been changed from $s_{t+1}$ to the actual state $s_{t+1}'$.
-**(4)** Compute and backpropagate the error $s_{t+1} - s_{t+1}'$ in the neural net to update the prediction policy.
-**(5)** Repeat *ad infinitum* (as necessary to operate the smart home).
+
+1) Apply current prediction policy at the state $s_{t}$ to actuate the predicted state $s_{t+1}$.
+2) Wait until the following time-step.
+3) Observe if the state has been changed from $s_{t+1}$ to the actual state $s_{t+1}'$.
+4) Compute and backpropagate the error $s_{t+1} - s_{t+1}'$ in the neural net to update the prediction policy.
+5) Repeat *ad infinitum* (as necessary to operate the smart home).
+
 Input is the smart home state (controllable smart home features and relevant environment states like temperature or time), while output is the smart home feature component of the state (as the environment and time are either only controllable in a control-theoretical sense or not controllable by the smart home).
 
 TODO - Adaptive Control - Analyze convergence of the policy for changes in human behavior, which can be interpreted as a trajectory/policy-tracking problem with sample error/loss on a stochastic process (to minimize the expectation of error). Generate 2 different classes of changed sequences/trajectories: 1) a (small) proper subset of a trajectory is persistently perturbed, and 2) the entire trajectory is persistently changed, and analyze when the policy reaches steady state (when the error is minimized and does not significantly change from any further training updates).

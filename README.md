@@ -70,7 +70,7 @@ AWS models are not deployable on the Nucleo. Send control commands to the Nucleo
 
 **Week 10** - Debug/optimize the control and ML algorithm(s), and prepare auxiliary materials (report, video, website, etc.) for the Project. Study the possibility of applying unsupervised learning and data summarization on the training dataset to extract approximately unique trajectories that the resident uses to customize the autonomy of the smart home.
 
-**Finals Week** - Complete the Project and fork/clone the GitHub.
+**Finals Week** - Complete the Project and fork/clone the repo on GitHub.
 
 ## Future Work
 

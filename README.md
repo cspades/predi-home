@@ -24,9 +24,9 @@ To design and prototype the system, I utilize [HomeIO](https://realgames.co/home
 
 To control the features of and actuate the predicted trajectory of the smart home, as well as communicate data between the smart home simulation and the Cloud, I will utilize an [STM Nucleo 32F446RE](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-mpu-eval-tools/stm32-mcu-mpu-eval-tools/stm32-nucleo-boards/nucleo-f446re.html#overview) programmed via [Mbed IDE](https://www.mbed.com/en/) and connected to [Amazon Web Services](https://aws.amazon.com/) to train an adaptive neural network that learns various control policies for all the appliances/computers in the smart home via [IoT](https://aws.amazon.com/iot-core/?hp=tile&so-exp=below) and [SageMaker](https://aws.amazon.com/sagemaker/?hp=tile&so-exp=below).
 
-TODO - Imitation Learning - Training on data (with epoch = 1 and a fixed learning rate) in the state-transition form <img src="/tex/46be24a0d958ee8e99d747a8dd1b6ea5.svg?invert_in_darkmode&sanitize=true" align=middle width=108.63268844999999pt height=29.789954700000024pt/> to learn a control policy.
+TODO - Imitation Learning - Training on data (with epoch = 1 and a fixed learning rate on a periodically-retrieved batch of data) in the state-transition form <img src="/tex/46be24a0d958ee8e99d747a8dd1b6ea5.svg?invert_in_darkmode&sanitize=true" align=middle width=108.63268844999999pt height=29.789954700000024pt/> to learn a control policy.
 
-TODO - Adaptive Control - Analyze convergence of the policy for changes in human behavior, which can be interpreted as a trajectory/policy-tracking problem with sample loss on a stochastic process.
+TODO - Adaptive Control - Analyze convergence of the policy for changes in human behavior, which can be interpreted as a trajectory/policy-tracking problem with sample error/loss on a stochastic process (to minimize the expectation of error).
 
 TODO - Unsupervised Learning - Clustering on data in the time-series form <img src="/tex/519c52325df920d2512a1dc8ca2b2c44.svg?invert_in_darkmode&sanitize=true" align=middle width=51.54129914999999pt height=27.6567522pt/> to classify state trajectories.
 

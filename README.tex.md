@@ -22,6 +22,10 @@ To design and prototype the system, I utilize [HomeIO](https://realgames.co/home
 
 To control the features of and actuate the predicted trajectory of the smart home, as well as communicate data between the smart home simulation and the Cloud, I will utilize an [STM Nucleo 32F446RE](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-mpu-eval-tools/stm32-mcu-mpu-eval-tools/stm32-nucleo-boards/nucleo-f446re.html#overview) programmed via [Mbed IDE](https://www.mbed.com/en/) and connected to [Amazon Web Services](https://aws.amazon.com/) to train an adaptive neural network that learns various control policies for all the appliances/computers in the smart home via [IoT](https://aws.amazon.com/iot-core/?hp=tile&so-exp=below) and [SageMaker](https://aws.amazon.com/sagemaker/?hp=tile&so-exp=below).
 
+TODO - Imitation Learning - Training on data in the state-transition form ${(s_t, s_{t+1})}_{t=1}^{N-1}$ to learn a control policy.
+
+TODO - Unsupervised Learning - Clustering on data in the time-series form ${s_t}_{t=1}^{N}$ to classify and group similar state trajectories.
+
 ## Tech & Resources
 
 **Project Website** - [cspades / predi-home](https://cspades.github.io/predi-home/)

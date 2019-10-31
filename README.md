@@ -113,6 +113,8 @@ Code/programs and design architecture for the STM Nucleo, ConnectI/O, and AWS th
 
 ## Future Work
 
+Extend Predi-Home to control all digital and analog features in the smart home. Alternatively, test on actual residents in a smart home.
+
 Re-training a neural net is not particularly efficient. Is it possible to efficiently un-train a neural net, perhaps via generating data that counteracts the impact of training on a set of data?
 
 **Developed by Cory Ye, for the embedded systems course ECE M202A at UCLA.**

@@ -26,6 +26,8 @@ To design and prototype the system, I utilize [HomeIO](https://realgames.co/home
 
 To control the features of and actuate the predicted trajectory of the smart home, as well as communicate data between the smart home simulation and the Cloud, I will utilize an [STM Nucleo 32F446RE](https://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-mpu-eval-tools/stm32-mcu-mpu-eval-tools/stm32-nucleo-boards/nucleo-f446re.html#overview) programmed via [Mbed IDE](https://www.mbed.com/en/) and connected to [Amazon Web Services](https://aws.amazon.com/) to train an adaptive neural network that learns various control policies for all the appliances/computers in the smart home via [IoT](https://aws.amazon.com/iot-core/?hp=tile&so-exp=below) and [SageMaker](https://aws.amazon.com/sagemaker/?hp=tile&so-exp=below).
 
+Smart home training/test data is retrieved or artificially designed with guidance from the [CASAS Database](http://casas.wsu.edu/datasets/).
+
 **Imitation Learning** - Training iteratively on data in the state-transition form $\{(s_t, s_{t+1})\}_{t=1}^{N-1} \subset \left(\left\{ 0,1 \right\}^m \times \left\{ 1, \dots, N \right\}\right)^2$ to learn a predictive control policy $\pi(s_t) =  \hat{s}_{t+1}$.
 
 __Imitation Learning Algorithm__
@@ -37,7 +39,7 @@ __Imitation Learning Algorithm__
 
 $$\sigma(x) = \frac{1}{1 + e^{-x}} \qquad L \left( \hat{s}_t, s_{t} \right) =  - \left( \sum_{k=1}^m s_{t,k} \log [\sigma(\hat{s}_{t,k})] + (1 - s_{t,k}) \log[1 - \sigma(\hat{s}_{t,k})] \right)$$
 
-Input to the neural net is the smart home state (a mixed-value vector of controllable binary smart home features concatenated with relevant ambient/environmental states like discrete time $t \in \mathbb{N}$), while the output to the neural net is the binary smart home feature component of the state vector (as the environment and time are either only controllable in a control-theoretic sense or not controllable by the smart home).
+Input to the neural net is the smart home state (a mixed-value vector of controllable binary smart home features concatenated with relevant ambient/environmental states like discrete time $t \in \mathbb{N}$), while the output to the neural net is the binary smart home feature component of the state vector (as the environment and time are either only controllable in a control-theoretic sense or not controllable by the smart home). Validation of the predictive control policy $\pi$ via integrating the loss function $L$ over a fixed episode/interval is computed over a test dataset randomly sampled from the distribution/dataset from which the training data was extracted, i.e. a collection of controllable feature states indexed in time representing periodic activity in a smart home.
 
 **Adaptive Control and Performance Metrics** - Analyze the convergence of the policy for abrupt yet persistent changes in resident behavioral policy, which can be interpreted as a trajectory/policy-tracking problem, and optimize the learning rate $\alpha$ of the neural net to maximize prediction accuracy with minimal training cycles. Generate test data on two classes of trajectory devations with varying magnitude/distance of policy deviation: either a (small) proper subset of a trajectory deviates, or the entire trajectory deviates. Analyze when the policy converges to steady state (when the prediction error ceases to improve with further training).
 
@@ -77,7 +79,7 @@ Observe that smaller $P(\alpha)$ implies versatile performance of the adaptive i
 
 3) [An Unsupervised User Behavior Prediction Algorithm Based on Machine Learning and Neural Network For Smart Home (2018)](https://ieeexplore.ieee.org/document/8458105)
 
-These three papers provide a relatively comprehensive overview of smart home technology that are augmented with machine learning algorithms. Most practical applications of smart home predictive automation utilize unsupervised learning to analyze a dataset for approximately similar trajectories or sequences/patterns that can be applied to smart home control policies. Not many general distinctions/interpretations are made about how such information is used, so we can arbitrarily assume that the implementation of the policy is application-specific, some combination of control dependent on relevant/guiding input from human-computer interfaces, conservative pre-programmed algorithms on a case-by-case basis, and/or autonomously induced and generalized policies through optimization or ambient machine learning. In my project, the supervised component will focus on the third case (via imitation learning), while the unsupervised component will focus on the first case (via data summarization). Note that the second case (smart home programming) is perhaps the most effective, yet it is the least flexible/generalizable, as it is artificially designed through deterministic code by resourceful engineers with large amounts of smart home design experience and application-specific usage data on smart home resident(s) with simplifying assumptions on feature control policies. No machine learning is applied whatsoever, which makes it no different from any other technologically-empowered home. Other research and industry work is centered on the networking, hardware, and security perspectives of computation on the edge and cloud. Due to the lack of existing advanced smart homes and unsolved challenges in security/privacy, Predi-Home is a primitive yet groundbreaking application of machine learning and adaptive control in smart homes.
+These three papers provide a relatively comprehensive overview of smart home technology that are augmented with machine learning algorithms. Most practical applications of smart home predictive automation utilize unsupervised learning to analyze a dataset for approximately similar trajectories or sequences/patterns that can be applied to smart home control policies. Not many general distinctions/interpretations are made about how such information is used, so we can arbitrarily assume that the implementation of the policy is application-specific, some combination of control dependent on relevant/guiding input from human-computer interfaces, conservative pre-programmed algorithms on a case-by-case basis, and/or autonomously induced and generalized policies through optimization or ambient machine learning. In my project, the supervised component will focus on the third case (via imitation learning), while the unsupervised component will focus on the first case (via data summarization). Note that the second case (smart home programming) is perhaps the most effective, yet it is the least flexible/generalizable, as it is artificially designed through deterministic code by resourceful engineers with large amounts of smart home design experience and application-specific usage data on smart home resident(s) with simplifying assumptions on feature control policies. No machine learning is applied whatsoever, which makes it no different from any other technologically-empowered home. Other research and industry work is centered on the networking, hardware, and security perspectives of computation on the edge and cloud. Due to the lack of existing advanced smart homes and unsolved challenges in security/privacy, Predi-Home is a hypothetical yet groundbreaking application of machine imitation learning in smart homes.
 
 ## Development Notebook
 
@@ -97,13 +99,17 @@ Simulation data will not be painstakingly extracted from the simulation via Conn
 
 **Week 7** - Design and code the imitation learning algorithm on AWS Sagemaker, and test/visualize it by training on simulated/generated trajectories of the smart home derived/sourced from reputable smart home usage databases or behavioral statistics (WSU CASAS). Validate the performance of the imitation learning model on real-time test data sampled from the training distribution.
 
-**Week 8** - Extra time in case of delayed development, as well as prepare for the Demo.
+**Week 8** - Extra time in case of delayed development, as well as prepare for the Demo. 
 
 **Week 9** - Close the loop and program the smart home control algorithm that collects/processes data from the simulation (Home/Connect-I/O), sends it to the Cloud (AWS IoT), retrieves the adaptive/learned policy (AWS Sagemaker), and control the smart home simulation (STM Nucleo).
 
 **Week 10** - Debug/optimize the control and ML algorithm(s), and prepare auxiliary materials (report, video, website, etc.) for the Project. Study the possibility of applying unsupervised learning and data summarization on the training dataset to extract approximately unique trajectories that the resident uses to customize the autonomy of the smart home.
 
 **Finals Week** - Complete the Project and fork/clone the repo on GitHub.
+
+## Deliverables
+
+Code/programs and design architecture for the STM Nucleo, ConnectI/O, and AWS that executes as designed if connected to a computer running HomeI/O or a compatible control API for smart homes.
 
 ## Future Work
 

@@ -12,9 +12,9 @@ In this project, we design and implement a simulated prototype of Predi-Home tha
 
 ## Project Objectives
 
-1) **Imitation Learning** - Design and implement a smart home control algorithm that collects sufficient data on realistically-simulated periodic activities pertaining to controllable features and environment variables in the smart home, iteratively trains an imitation learning model in real-time to learn a predictive control decision policy for controllable features in the smart home via trial-and-error, and applies the prediction policy to autonomously control smart features on behalf of resident(s) in the smart home.
+1) **Imitation Learning** - Design and implement a smart home control algorithm that collects sufficient data on realistically-simulated periodic activities pertaining to controllable features and environment variables in the smart home, iteratively trains an imitation learning model in real-time to learn a predictive control decision policy $\pi$ for controllable features in the smart home via trial-and-error, and applies the prediction policy to autonomously control smart features on behalf of resident(s) in the smart home.
 
-2) **Adaptive Control and Performance Metrics** - Optimize the amount of time and computation necessary for the imitation learning model to functionally adapt to changes in activity patterns of various complexity in the smart home. Analyze trade-off between adaptation rate and predictive accuracy of the smart control algorithm, which depends on the learning rate of neural net.
+2) **Adaptive Control and Performance Metrics** - Optimize the amount of time and computation necessary for the imitation learning model to functionally adapt to changes in activity patterns of various complexity in the smart home. Analyze trade-off between adaptation rate and predictive accuracy of the smart control algorithm, which depends on the learning rate $\alpha$ of the neural net.
 
 Time permitting...
 

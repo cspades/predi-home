@@ -83,13 +83,13 @@ These four papers provide a relatively comprehensive overview of smart home tech
 
 ## Development Notebook
 
-AWS models are not deployable on the Nucleo. Send control commands to the Nucleo via AWS IoT.
+1) AWS models are not deployable on the Nucleo. Send control commands to the Nucleo via AWS IoT.
 
-Opted to have the imitation learning problem search for a state-dependent control policy rather than a single optimal state trajectory, because control policies exceptionally improve the versatility and flexibility of the imitation learning model to sequential decision making and adaptation.
+2) Opted to have the imitation learning problem search for a state-dependent control policy rather than a single optimal state trajectory, because control policies exceptionally improve the versatility and flexibility of the imitation learning model to sequential decision making and adaptation.
 
-Observe that the imitation learning objective focuses on learning a general policy for the smart home, while the adaptive control objective focuses on the convergence of the model to a changed policy. Both are important in the autonomous performance of a smart home, because the former will determine an optimal policy minimize prediction errors for unprecedented sequences of states, while the latter will optimize how quickly such a policy is determined.
+3) Observe that the imitation learning objective focuses on learning a general policy for the smart home, while the adaptive control objective focuses on the convergence of the model to a changed policy. Both are important in the autonomous performance of a smart home, because the former will determine an optimal policy minimize prediction errors for unprecedented sequences of states, while the latter will optimize how quickly such a policy is determined.
 
-Simulation data will not be painstakingly extracted from the simulation via ConnectI/O. With guidance from the CASAS dataset, I will instead artificially generate the simulation data for the subset of controllable smart home features that the neural net will learn, and utilize the simulation to analyze/visualize the performance of the predictive control policy $\pi$. In reality, the embedded system would be extracting simulation data in each training cycle, but I will accelerate/automate the training with larger time-ordered batches of training data that will iteratively train the neural net (as if the training data were individually extracted from the simulation).
+4) Simulation data will not be painstakingly extracted from the simulation via ConnectI/O. With guidance from the CASAS dataset, I will instead artificially generate the simulation data for the subset of controllable smart home features that the neural net will learn, and utilize the simulation to analyze/visualize the performance of the predictive control policy $\pi$. In reality, the embedded system would be extracting simulation data in each training cycle, but I will accelerate/automate the training with larger time-ordered batches of training data that will iteratively train the neural net (as if the training data were individually extracted from the simulation).
 
 ## Development Timeline
 

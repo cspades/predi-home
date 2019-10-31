@@ -32,14 +32,17 @@ __Imitation Learning Algorithm__
 1) Apply current prediction policy at the state $s_{t}$ to actuate the predicted state $\hat{s}_{t+1}$ for discrete time $t \in \mathbb{N}$.
 2) Wait until the following time-step $t+1$.
 3) Observe if the state has been changed from $\hat{s}_{t+1}$ to the actual state $s_{t+1}$.
-4) Compute and backpropagate the error $e_{t+1} = \hat{s}_{t+1} - s_{t+1}$ in the neural net to update/train the prediction policy with the maximum likelihood loss for the logistic regression classifier.
-$$L \left( \hat{s}_t, s_{t} \right) = \sum_{k=1}^m s_{t,k} \log [\sigma(\hat{s}_{t,k})] + (1 - s_{t,k}) \log[1 - \sigma(\hat{s}_{t,k})]$$
+4) Compute and backpropagate the error $e_{t+1} = \hat{s}_{t+1} - s_{t+1}$ in the neural net to update/train the prediction policy with the maximum likelihood loss $L$.
 5) Repeat *ad infinitum* (as necessary to operate the smart home).
+
+$$L \left( \hat{s}_t, s_{t} \right) = \sum_{k=1}^m s_{t,k} \log [\sigma(\hat{s}_{t,k})] + (1 - s_{t,k}) \log[1 - \sigma(\hat{s}_{t,k})] \qquad \qquad \sigma(x) = \frac{1}{1 + e^{-x}}$$
 
 Input to the neural net is the smart home state (a mixed-value vector of controllable binary smart home features concatenated with relevant ambient/environmental states like discrete time $t \in \mathbb{N}$), while the output to the neural net is the binary smart home feature component of the state vector (as the environment and time are either only controllable in a control-theoretic sense or not controllable by the smart home).
 
 **Adaptive Control and Performance Metrics** - Analyze the convergence of the policy for changes in human behavior, which can be interpreted as a trajectory/policy-tracking problem with sample error/loss on a stochastic process, and optimize the learning rate $\alpha$ of the neural net to maximize prediction accuracy with minimal training iterations. Generate two different classes of changed sequences/trajectories: a (small) proper subset of a trajectory deviates, or the entire trajectory deviates, and analyze when the policy reaches steady state (when the prediction error ceases to improve). Overal adaptive performance $P$ of the imitation learning algorithm will be measured as a function of prediction error of a partially-trained policy $\pi_d(s_t) =  \hat{s}_{t+1}$ for a test set representing sample state transition data of the changed trajectory $V_{\text{test}}$ after a specified number of training epochs $d \in \mathbb{N}$.
+
 $$P(\alpha) = \max_{d} \left\{ d \cdot \sum_{(s_t, s_{t+1}) \in V_{\text{test}}} L \left( \pi_d(s_t), s_{t+1} \right) \right\}$$
+
 Observe that small $P(\alpha)$ implies versatile performance of the adaptive imitation learning algorithm, because minimizing the test set loss minimizes $P(\alpha)$ yet the number of training epochs $d$ penalizes the loss if the imitation learning algorithm does not rapidly adapt.
 
 **Unsupervised Learning** - Clustering on data in the time-series form $\{s_t\}_{t=1}^{N}$ to classify state trajectories.

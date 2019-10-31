@@ -8,7 +8,7 @@ Predi-Home is a Cloud AI-driven embedded system that trains on the discretized t
 
 In particular, a neural net trains on the sequence of states <img src="/tex/519c52325df920d2512a1dc8ca2b2c44.svg?invert_in_darkmode&sanitize=true" align=middle width=51.54129914999999pt height=27.6567522pt/> associated with controllable features of the smart home to determine a predictive decision policy <img src="/tex/877989f4305367f4d75870f7748bf343.svg?invert_in_darkmode&sanitize=true" align=middle width=87.47151104999999pt height=24.65753399999998pt/> for an autonomous smart home controller with minimal guidance from or interaction with the resident(s) of the smart home. To control the autonomy of the predictive controller, an unsupervised algorithm (i.e., a dynamically-trained/updated k-means classifier) will differentiate a "checkpoint" subset of the past training data for the imitation learning model in order to group together approximately equivalent trajectories into classes that can be flexibly activated or deactivated in the re-training of the predictive controller.
 
-In this project, we design and implement a simulated prototype of Predi-Home that learns to predict the (binary, on/off) activity of and autonomously control the lights and doors of a smart home in real-time.
+In this project, we design and implement a simulated prototype of Predi-Home that learns to predict the activity of the lights and doors of a smart home in order to autonomously control the smart home in real-time.
 
 ## Project Objectives
 

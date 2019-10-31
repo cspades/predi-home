@@ -113,7 +113,7 @@ Code/programs and design architecture for the STM Nucleo, ConnectI/O, and AWS th
 
 ## Future Work
 
-Extend Predi-Home to control all digital and analog features in the smart home. Alternatively, test on actual residents in a smart home.
+Extend Predi-Home to control all digital and analog features/devices in a modern smart home. Add disruptive noise and compensating filters to the control algorithm. Test on actual smart homes.
 
 Re-training a neural net is not particularly efficient. Is it possible to efficiently un-train a neural net, perhaps via generating data that counteracts the impact of training on a set of data?
 

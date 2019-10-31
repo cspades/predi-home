@@ -34,7 +34,7 @@ __Imitation Learning Algorithm__
 1) Apply current prediction policy at the state $s_{t}$ to actuate the predicted state $\hat{s}_{t+1}$ for discrete time $t \in \mathbb{N}$.
 2) Wait until the following time-step $t+1$.
 3) Observe if the state has been changed from $\hat{s}_{t+1}$ to the actual state $s_{t+1}$.
-4) Compute and backpropagate the error $e_{t+1} = \hat{s}_{t+1} - s_{t+1}$ in the neural net to update/train the prediction policy with the binary logistic regression cross-entropy loss $L$. $$\hspace{-6mm} L \left( \hat{s}_t, s_{t} \right) =  - \left( \sum_{k=1}^m s_{t,k} \log [\sigma(\hat{s}_{t,k})] + (1 - s_{t,k}) \log[1 - \sigma(\hat{s}_{t,k})] \right) \qquad \left( \sigma(x) = \frac{1}{1 + e^{-x}} \right)$$
+4) Compute and backpropagate the error $e_{t+1} = \hat{s}_{t+1} - s_{t+1}$ in the neural net to update/train the prediction policy with the binary logistic regression cross-entropy loss $L$. $$\hspace{-2cm} L \left( \hat{s}_t, s_{t} \right) =  - \left( \sum_{k=1}^m s_{t,k} \log [\sigma(\hat{s}_{t,k})] + (1 - s_{t,k}) \log[1 - \sigma(\hat{s}_{t,k})] \right) \qquad \left( \sigma(x) = \frac{1}{1 + e^{-x}} \right)$$
 5) Repeat *ad infinitum* (as necessary to operate the smart home).
 
 Input to the neural net is the smart home state (a mixed-value vector of controllable binary smart home features concatenated with relevant ambient/environmental states like discrete time $t \in \mathbb{N}$), while the output to the neural net is the binary smart home feature component of the state vector (as the environment and time are either only controllable in a control-theoretic sense or not controllable by the smart home). Validation of the predictive control policy $\pi$ is computed via integrating the loss function $L$ over an episodic test dataset randomly sampled from the training distribution.
@@ -75,7 +75,7 @@ Observe that smaller $P(\alpha,\gamma)$ implies versatile performance of the ada
 
 2) [CASAS: A Smart Home in a Box (2013)](https://ieeexplore.ieee.org/abstract/document/6313586)
 
-3) [Learning Activity Predictors from Sensor Data: Algorithms, Evaluation, and Applications](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8031060)
+3) [Learning Activity Predictors from Sensor Data: Algorithms, Evaluation, and Applications (2017)](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8031060)
 
 4) [An Unsupervised User Behavior Prediction Algorithm Based on Machine Learning and Neural Network For Smart Home (2018)](https://ieeexplore.ieee.org/document/8458105)
 

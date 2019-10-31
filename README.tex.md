@@ -32,10 +32,10 @@ __Imitation Learning Algorithm__
 1) Apply current prediction policy at the state $s_{t}$ to actuate the predicted state $\hat{s}_{t+1}$ for discrete time $t \in \mathbb{N}$.
 2) Wait until the following time-step $t+1$.
 3) Observe if the state has been changed from $\hat{s}_{t+1}$ to the actual state $s_{t+1}$.
-4) Compute and backpropagate the error $e_{t+1} = \hat{s}_{t+1} - s_{t+1}$ in the neural net to update/train the prediction policy with the maximum likelihood loss $L$.
+4) Compute and backpropagate the error $e_{t+1} = \hat{s}_{t+1} - s_{t+1}$ in the neural net to update/train the prediction policy with the binary logistic regression cross-entropy loss $L$.
 5) Repeat *ad infinitum* (as necessary to operate the smart home).
 
-$$L \left( \hat{s}_t, s_{t} \right) = \sum_{k=1}^m s_{t,k} \log [\sigma(\hat{s}_{t,k})] + (1 - s_{t,k}) \log[1 - \sigma(\hat{s}_{t,k})] \qquad \qquad \sigma(x) = \frac{1}{1 + e^{-x}}$$
+$$\sigma(x) = \frac{1}{1 + e^{-x}} \qquad L \left( \hat{s}_t, s_{t} \right) =  - \left( \sum_{k=1}^m s_{t,k} \log [\sigma(\hat{s}_{t,k})] + (1 - s_{t,k}) \log[1 - \sigma(\hat{s}_{t,k})] \right)$$
 
 Input to the neural net is the smart home state (a mixed-value vector of controllable binary smart home features concatenated with relevant ambient/environmental states like discrete time $t \in \mathbb{N}$), while the output to the neural net is the binary smart home feature component of the state vector (as the environment and time are either only controllable in a control-theoretic sense or not controllable by the smart home).
 
@@ -43,9 +43,9 @@ Input to the neural net is the smart home state (a mixed-value vector of control
 
 $$P(\alpha) = \max_{d} \left\{ d \cdot \sum_{(s_t, s_{t+1}) \in V_{\text{test}}} L \left( \pi_d(s_t), s_{t+1} \right) \right\}$$
 
-Observe that small $P(\alpha)$ implies versatile performance of the adaptive imitation learning algorithm, because minimizing the test set loss minimizes $P(\alpha)$ yet the number of training epochs $d$ penalizes the loss if the imitation learning algorithm does not rapidly adapt.
+Observe that smaller $P(\alpha)$ implies versatile performance of the adaptive imitation learning algorithm, because minimizing the test set loss minimizes $P(\alpha)$ yet the delay from the number of training epochs $d$ penalizes/amplifies the loss if the imitation learning algorithm does not rapidly adapt. $P(\alpha)$ is a worst-case metric, because it takes the maximum of the performance of all partially-trained policies $\pi_d$ as it converges to the optimal policy $\pi$.
 
-**Unsupervised Learning** - Clustering on data in the time-series form $\{s_t\}_{t=1}^{N}$ to classify state trajectories.
+**Unsupervised Learning** - Clustering on checkpoint training data in the time-series form $\{s_t\}_{t=1}^{N}$ to classify state trajectories in an episode or period of time. Construct an index for the classes to the training data, and analyze the performance of the re-trained (or "recovered") policy after removing specified classes of trajectories from the checkpoint training set as a function of the memory capacity of the checkpoint training dataset $C$. In particular, validate if the predictive policy has arguably "un-learned" the deleted/deactivated activities in controlling the features of the smart home.
 
 ## Tech & Resources
 

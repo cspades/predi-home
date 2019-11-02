@@ -1,4 +1,4 @@
-![alt text](https://imgur.com/OCAhIp1.png)
+![alt text](https://imgur.com/OCAhIp1.png) 
 
 # predi-home
 

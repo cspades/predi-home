@@ -38,7 +38,7 @@ Smart home training/test data is retrieved or artificially designed with guidanc
 
 2) Send the state $s_{t}$ to the trained control policy on the Cloud.
 
-3) Compute the prediction for the following state $\hat{s}_{t+1}$.
+3) Compute the prediction for the following state $\hat{s}_{t+1}$ on the Cloud.
 
 4) Send the predicted state $\hat{s}_{t+1}$ to the Edge.
 

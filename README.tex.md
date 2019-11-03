@@ -75,6 +75,8 @@ Observe that smaller $P(\alpha,\gamma)$ implies versatile performance of the ada
 
 **Amazon Web Services** - [AWS IoT](https://aws.amazon.com/iot-core/?hp=tile&so-exp=below) and [AWS Sagemaker](https://aws.amazon.com/sagemaker/?hp=tile&so-exp=below) with [Sagemaker GitHub Examples](https://github.com/awslabs/amazon-sagemaker-examples)
 
+**AWS-Python SDK** [Python to AWS IoT](https://github.com/aws/aws-iot-device-sdk-python) and [AWS Toolkit for PyCharm](https://github.com/aws/aws-iot-device-sdk-python)
+
 **HomeI/O** - [HomeIO](https://realgames.co/home-io/)
 
 **Smart Home Usage Statistics and Data** - [WSU CASAS Database](http://casas.wsu.edu/datasets/)

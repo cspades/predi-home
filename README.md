@@ -77,7 +77,7 @@ Observe that smaller $P(\alpha,\gamma)$ implies versatile performance of the ada
 
 **AWS-Python SDK** [Python to AWS IoT](https://github.com/aws/aws-iot-device-sdk-python) and [AWS Toolkit for PyCharm](https://github.com/aws/aws-iot-device-sdk-python)
 
-**HomeI/O** - [HomeIO](https://realgames.co/home-io/)
+**HomeI/O** - [HomeIO](https://realgames.co/home-io/) and [Python SDK for HomeI/O](https://docs.realgames.co/homeio/en/python/)
 
 **Smart Home Usage Statistics and Data** - [WSU CASAS Database](http://casas.wsu.edu/datasets/)
 

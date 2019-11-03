@@ -24,9 +24,9 @@ Time permitting...
 
 ![alt text](https://imgur.com/prFBbF9.png)
 
-To design and prototype the system, I utilize [HomeIO](https://realgames.co/home-io/) with [Scratch 2](https://scratch.mit.edu/) to simulate and control the features of the smart home.
+To design and prototype the system, I utilize [HomeIO](https://realgames.co/home-io/) to simulate and control the features of the smart home.
 
-To communicate data between the smart home simulation on HomeI/O and the machine learning algorithm trained/deployed on the [Amazon Web Services](https://aws.amazon.com/) Cloud, I will program a Scratch extension and/or data processing relay in Python that executes on a PC (Dell XPS 15) and is connected to [AWS IoT](https://aws.amazon.com/iot-core/?hp=tile&so-exp=below).
+To communicate data between the smart home simulation on HomeI/O and the machine learning algorithm trained/deployed on the [Amazon Web Services](https://aws.amazon.com/) Cloud, I will program a control and data processing relay via the Python-HomeI/O SDK that executes on a PC (Dell XPS 15) and is connected to [AWS IoT](https://aws.amazon.com/iot-core/?hp=tile&so-exp=below).
 
 To train an adaptive neural network that learns predictive control policies for all the appliances/computers in the smart home on the Cloud, I will utilize [AWS SageMaker](https://aws.amazon.com/sagemaker/?hp=tile&so-exp=below).
 
@@ -75,7 +75,7 @@ Observe that smaller $P(\alpha,\gamma)$ implies versatile performance of the ada
 
 **Amazon Web Services** - [AWS IoT](https://aws.amazon.com/iot-core/?hp=tile&so-exp=below) and [AWS Sagemaker](https://aws.amazon.com/sagemaker/?hp=tile&so-exp=below) with [Sagemaker GitHub Examples](https://github.com/awslabs/amazon-sagemaker-examples)
 
-**HomeI/O and Scratch 2 for Desktop/Offline** - [HomeIO](https://realgames.co/home-io/) and [Scratch 2](https://scratch.mit.edu/)
+**HomeI/O** - [HomeIO](https://realgames.co/home-io/)
 
 **Smart Home Usage Statistics and Data** - [WSU CASAS Database](http://casas.wsu.edu/datasets/)
 
@@ -95,25 +95,25 @@ These four papers provide a relatively comprehensive overview of smart home tech
 
 ## Development Notebook
 
-1) Assuming that the edge computer/controller (Scratch 2 on the PC) is limited in memory and compute, assume that machine learning algorithms/models cannot be trained/deployed on the PC. Consequently, we simulate the existence of an embedded system on the edge via training and deploying the machine learning component on the AWS Cloud.
+1) Assuming that the edge computer/controller is limited in memory and compute, assume that machine learning algorithms/models cannot be trained/deployed on the PC. Consequently, we simulate the existence of an embedded system on the edge via training and deploying the machine learning component on the AWS Cloud.
 
 2) Opted to have the imitation learning problem search for a state-dependent control policy rather than a single optimal state trajectory, because control policies exceptionally improve the versatility and flexibility of the imitation learning model to sequential decision making and adaptation.
 
 3) Observe that the imitation learning objective focuses on learning a general policy for the smart home, while the adaptive control objective focuses on the convergence of the model to a changed policy. Both are important in the autonomous performance of a smart home, because the former will determine an optimal policy minimize prediction errors for unprecedented sequences of states, while the latter will optimize how quickly such a policy is determined.
 
-4) Simulation datasets will not be painstakingly extracted from HomeI/O via Scratch 2. With guidance from the CASAS dataset, I will instead artificially generate the simulation data for the subset of controllable smart home features that the neural net will learn, and exclusively utilize the simulation to analyze/visualize the performance of the predictive control policy $\pi$ in real-time. In reality, the embedded system would be extracting simulation data in each training and prediction cycle, yet instead I will accelerate/automate the training phase of the cycle with larger time-ordered batches of training data that will sequentially/iteratively train the neural net (as if the training data were individually extracted from the simulation). However, deploying the prediction policy will be synchronized in closed loop to emulate the actual operation of the cloud-computed predictive controller.
+4) Simulation datasets will not be painstakingly extracted from HomeI/O. With guidance from the CASAS dataset, I will instead artificially generate the simulation data for the subset of controllable smart home features that the neural net will learn, and exclusively utilize the simulation to analyze/visualize the performance of the predictive control policy $\pi$ in real-time. In reality, the embedded system would be extracting simulation data in each training and prediction cycle, yet instead I will accelerate/automate the training phase of the cycle with larger time-ordered batches of training data that will sequentially/iteratively train the neural net (as if the training data were individually extracted from the simulation). However, deploying the prediction policy will be synchronized in closed loop to emulate the actual operation of the cloud-computed predictive controller.
 
 ## Development Timeline
 
-**Week 5** - Initiate setup for the software platform of the system, with tests to communicate between PC (HomeIO/Scratch) and AWS IoT.
+**Week 5** - Initiate setup for the software platform of the system, with tests to communicate between PC (HomeIO) and AWS IoT.
 
-**Week 6** - Debug the software setup, program the smart home controller on Scratch 2, and in consideration of the data structures, memory, communication latency, and the simulation API, roughly design the imitation learning algorithm to learn the control policy of the smart home on AWS Sagemaker.
+**Week 6** - Debug the software setup, program the smart home controller on Python, and in consideration of the data structures, memory, communication latency, and the simulation API, roughly design the imitation learning algorithm to learn the control policy of the smart home on AWS Sagemaker.
 
 **Week 7** - Design and code the imitation learning algorithm on AWS Sagemaker, and test/visualize it by training on simulated trajectories of the smart home derived/sourced from reputable smart home resident behavioral statistics databases (WSU CASAS). Validate the performance of the imitation learning model on real-time test data sampled from the training distribution.
 
 **Week 8** - Extra time in case of delayed development, as well as prepare for the Demo. 
 
-**Week 9** - Close the loop and program the smart home control algorithm that extracts/processes data from the simulation (HomeI/O), sends it to the Cloud (AWS IoT), retrieves the adaptive/learned policy (AWS Sagemaker), and control the smart home simulation (Scratch).
+**Week 9** - Close the loop and program the smart home control algorithm that extracts/processes data from the simulation (HomeI/O), sends it to the Cloud (AWS IoT), retrieves the adaptive/learned policy (AWS Sagemaker), and control the smart home simulation (Python).
 
 **Week 10** - Debug/optimize the control and ML algorithm(s), and prepare auxiliary materials (report, video, website, etc.) for the Project. Study the possibility of applying unsupervised learning and data summarization on the training dataset to extract approximately unique trajectories that the resident uses to customize the autonomy of the smart home.
 
@@ -121,7 +121,7 @@ These four papers provide a relatively comprehensive overview of smart home tech
 
 ## Deliverables
 
-Code/programs and design architecture for Predi-Home, including supporting data processing and communication programs (in Python), the smart home controller in Scratch, and the training/deployment code for the neural net on AWS that operates as designed if connected to a computer running HomeI/O or a compatible control API for smart homes.
+Code/programs and design architecture for Predi-Home, including supporting control, data processing, and communication programs in Python, and the training/deployment code for the neural net on AWS that operates as designed if connected to a computer running HomeI/O or a compatible control API for smart homes.
 
 ## Future Work
 

@@ -22,7 +22,7 @@ Time permitting...
 
 ## Project Specifications and Methodology
 
-![alt text](https://imgur.com/prFBbF9.png)
+![alt text](https://imgur.com/7zVWSiT.png)
 
 To design and prototype the system, I utilize [HomeIO](https://realgames.co/home-io/) to simulate and control the features of the smart home.
 

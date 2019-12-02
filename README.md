@@ -125,6 +125,8 @@ These four papers provide a relatively comprehensive overview of smart home tech
 
 Code/programs and design architecture for Predi-Home, including supporting control, data processing, and communication programs in Python, and the training/deployment code for the neural net on AWS that operates as designed if connected to a computer running HomeI/O or a compatible control API for smart homes.
 
+**Project Status** - In-Progress!
+
 ## Future Work
 
 Extend Predi-Home to control all digital and analog features/devices in a modern smart home. Add disruptive noise and compensating filters to the control algorithm. Test on actual smart homes.

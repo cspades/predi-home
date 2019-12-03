@@ -1,5 +1,3 @@
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-
 ![alt text](https://imgur.com/OCAhIp1.png) 
 
 # predi-home
@@ -11,6 +9,11 @@ Predi-Home is a Cloud AI-driven embedded system that trains on the discretized t
 In particular, a cloud-based neural net trains on the sequence of states $$\{s_t\}_{t=1}^{N}$$ associated with controllable features of the smart home to determine a predictive decision policy $$\pi(s_t) =  \hat{s}_{t+1}$$ for an autonomous smart home controller with minimal guidance from or interaction with the resident(s) of the smart home. To control the autonomy of the predictive controller, an unsupervised algorithm (i.e., a dynamically-trained $$k$$-means classifier) will differentiate a "checkpoint" subset of the past training data for the imitation learning model in order to group together approximately equivalent trajectories into classes that can be flexibly activated or deactivated in the re-training of the predictive controller.
 
 In this project, we design and implement a simulated prototype of Predi-Home that learns to predict the activity of the lights and doors of a smart home in order to autonomously control the smart home in real-time.
+
+<details><summary></summary>
+<p>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+</p>
 
 ## Project Objectives
 

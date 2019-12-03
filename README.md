@@ -123,9 +123,21 @@ These four papers provide a relatively comprehensive overview of smart home tech
 
 **Finals Week** - Complete the Project and fork/clone the repo on GitHub.
 
-## Deliverables
+## Deliverables and Repository Contents
 
 Code/programs and design architecture for Predi-Home, including supporting control, data processing, and communication programs in Python, and the training/deployment code for the neural net on AWS that operates as designed if connected to a computer running HomeI/O or a compatible control API for smart homes.
+
+*predi-home-control.py* is the Python program that executes the smart-home control and machine learning algorithm.
+
+*predi-home-ML.py* is a subset of the previous program utilized to optimize and tune the machine learning component.
+
+*EngineIO.dll*, *Python.Runtime.dll*, and *clr.pyd* are necessary libraries and programs to communicate with HomeI/O.
+
+*home-io-devices-map-en.pdf* is the blueprint of the architecture and features of the smart-home.
+
+*LLLL_sched_#* are MATLAB matrices and CSV's containing corresponding smart-home feature (i.e., lights) time-series data utilized for the machine learning component of Predi-Home.
+
+*time_conv.m* and *time_samp.m* converts the 24-hour time to a sample time index and vice versa, in order to manufacture the smart-home feature data from annotations on the CASAS dataset.
 
 **Project Status** - In-Progress!
 

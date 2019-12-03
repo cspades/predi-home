@@ -97,7 +97,7 @@ These four papers provide a relatively comprehensive overview of smart home tech
 
 ## Development Notebook
 
-1) Assuming that the edge computer/controller is limited in memory and compute, assume that machine learning algorithms/models cannot be trained/deployed on the PC. Consequently, we simulate the existence of an embedded system on the edge via training and deploying the machine learning component on the AWS Cloud.
+1) Assuming that the edge computer/controller is limited in memory and compute, assume that machine learning algorithms/models cannot be trained/deployed on the PC. Consequently, we simulate the existence of an embedded system on the edge via training and deploying the machine learning component on the AWS Cloud. (Note: AWS implementation is in-progress, and will not be included in the project.)
 
 2) Opted to have the imitation learning problem search for a state-dependent control policy rather than a single optimal state trajectory, because control policies exceptionally improve the versatility and flexibility of the imitation learning model to sequential decision making and adaptation.
 

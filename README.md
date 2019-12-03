@@ -6,15 +6,15 @@
 
 Predi-Home is a Cloud AI-driven embedded system that trains on the discretized time-series state trajectory of a smart home to predict and autonomously operate various smart features (lights, remote-controlled doors, etc.) of the smart home in real-time via imitation learning on human-computer/appliance interactions, in order to improve the lifestyle, efficiency, and productivity of the resident(s) of the smart home.
 
-In particular, a cloud-based neural net trains on the sequence of states $\{s_t\}_{t=1}^{N}$ associated with controllable features of the smart home to determine a predictive decision policy $\pi(s_t) =  \hat{s}_{t+1}$ for an autonomous smart home controller with minimal guidance from or interaction with the resident(s) of the smart home. To control the autonomy of the predictive controller, an unsupervised algorithm (i.e., a dynamically-trained k-means classifier) will differentiate a "checkpoint" subset of the past training data for the imitation learning model in order to group together approximately equivalent trajectories into classes that can be flexibly activated or deactivated in the re-training of the predictive controller.
+In particular, a cloud-based neural net trains on the sequence of states $$\{s_t\}_{t=1}^{N}$$ associated with controllable features of the smart home to determine a predictive decision policy $$\pi(s_t) =  \hat{s}_{t+1}$$ for an autonomous smart home controller with minimal guidance from or interaction with the resident(s) of the smart home. To control the autonomy of the predictive controller, an unsupervised algorithm (i.e., a dynamically-trained k-means classifier) will differentiate a "checkpoint" subset of the past training data for the imitation learning model in order to group together approximately equivalent trajectories into classes that can be flexibly activated or deactivated in the re-training of the predictive controller.
 
 In this project, we design and implement a simulated prototype of Predi-Home that learns to predict the activity of the lights and doors of a smart home in order to autonomously control the smart home in real-time.
 
 ## Project Objectives
 
-1) **Imitation Learning** - Design and implement a smart home control algorithm that collects sufficient data on realistically-simulated periodic activities pertaining to controllable features and environment variables in the smart home, iteratively trains an imitation learning model in real-time to learn a predictive control decision policy $\pi$ for controllable features in the smart home via trial-and-error, and applies the prediction policy to autonomously control smart features on behalf of resident(s) in the smart home.
+1) **Imitation Learning** - Design and implement a smart home control algorithm that collects sufficient data on realistically-simulated periodic activities pertaining to controllable features and environment variables in the smart home, iteratively trains an imitation learning model in real-time to learn a predictive control decision policy $$\pi$$ for controllable features in the smart home via trial-and-error, and applies the prediction policy to autonomously control smart features on behalf of resident(s) in the smart home.
 
-2) **Adaptive Control and Performance Metrics** - Optimize the amount of time and computation necessary for the imitation learning model to functionally adapt to changes in activity patterns of various complexity in the smart home. Analyze trade-off between adaptation rate and predictive accuracy of the smart control algorithm, which depends on the learning rate $\alpha$ of the neural net.
+2) **Adaptive Control and Performance Metrics** - Optimize the amount of time and computation necessary for the imitation learning model to functionally adapt to changes in activity patterns of various complexity in the smart home. Analyze trade-off between adaptation rate and predictive accuracy of the smart control algorithm, which depends on the learning rate $$\alpha$$ of the neural net.
 
 Time permitting...
 
@@ -34,40 +34,43 @@ Smart home training/test data is retrieved or artificially designed with guidanc
 
 **Edge-Cloud Control Loop of the System**
 
-1) Observe the state of the smart home $s_{t}$ at the Edge.
+1) Observe the state of the smart home $$s_{t}$$ at the Edge.
 
-2) Send the state $s_{t}$ to the trained control policy on the Cloud.
+2) Send the state $$s_{t}$$ to the trained control policy on the Cloud.
 
-3) Compute the prediction for the following state $\hat{s}_{t+1}$ on the Cloud.
+3) Compute the prediction for the following state $$\hat{s}_{t+1}$$ on the Cloud.
 
-4) Send the predicted state $\hat{s}_{t+1}$ to the Edge.
+4) Send the predicted state $$\hat{s}_{t+1}$$ to the Edge.
 
-5) Actuate the predicted state $\hat{s}_{t+1}$ in the smart home at the Edge.
+5) Actuate the predicted state $$\hat{s}_{t+1}$$ in the smart home at the Edge.
 
-**Imitation Learning** - Training iteratively on periodic batches of episodic data with $m$ controllable features in the state-transition form $\{(s_t, s_{t+1})\}_{t=1}^{N-1} \subset \left(\left\{ 0,1 \right\}^m \times \left\{ 1, \dots, N \right\}\right)^2$ to learn a predictive control policy $\pi(s_t) =  \hat{s}_{t+1}$.
+**Imitation Learning** - Training iteratively on periodic batches of episodic data with $$m$$ controllable features in the state-transition form $$\{(s_t, s_{t+1})\}_{t=1}^{N-1} \subset \left(\left\{ 0,1 \right\}^m \times \left\{ 1, \dots, N \right\}\right)^2$$ to learn a predictive control policy $$\pi(s_t) =  \hat{s}_{t+1}$$.
 
 __Imitation Learning Algorithm__
-1) Apply current prediction policy at the state $s_{t}$ to actuate the predicted state $\hat{s}_{t+1}$ for discrete time $t \in \mathbb{N}$.
-2) Wait until the following time-step $t+1$.
-3) Observe if the state has been changed from $\hat{s}_{t+1}$ to the actual state $s_{t+1}$.
-4) Compute and backpropagate the error $e_{t+1} = \hat{s}_{t+1} - s_{t+1}$ in the neural net to update/train the prediction policy with the binary logistic regression cross-entropy loss $L$. $$L \left( \hat{s}_t, s_{t} \right) =  - \left( \sum_{k=1}^m s_{t,k} \log [\sigma(\hat{s}_{t,k})] + (1 - s_{t,k}) \log[1 - \sigma(\hat{s}_{t,k})] \right) \qquad \left( \sigma(x) = \frac{1}{1 + e^{-x}} \right)$$
+1) Apply current prediction policy at the state $$s_{t}$$ to actuate the predicted state $$\hat{s}_{t+1}$$ for discrete time $$t \in \mathbb{N}$$.
+2) Wait until the following time-step $$t+1$$.
+3) Observe if the state has been changed from $$\hat{s}_{t+1}$$ to the actual state $$s_{t+1}$$.
+4) Compute and backpropagate the error $$e_{t+1} = \hat{s}_{t+1} - s_{t+1}$$ in the neural net to update/train the prediction policy with the binary logistic regression cross-entropy loss $$L$$.
+$$
+L \left( \hat{s}_t, s_{t} \right) =  - \left( \sum_{k=1}^m s_{t,k} \log [\sigma(\hat{s}_{t,k})] + (1 - s_{t,k}) \log[1 - \sigma(\hat{s}_{t,k})] \right) \qquad \left( \sigma(x) = \frac{1}{1 + e^{-x}} \right)
+$$
 5) Repeat *ad infinitum* (as necessary to operate the smart home).
 
-Input to the neural net is the smart home state (a mixed-value vector of controllable binary smart home features concatenated with relevant ambient/environmental states like discrete time $t \in \mathbb{N}$), while the output to the neural net is the binary smart home feature component of the state vector (as the environment and time are either only controllable in a control-theoretic sense or not controllable by the smart home). Validation of the predictive control policy $\pi$ is computed via integrating the loss function $L$ over an episodic test dataset $V_{\text{test}}$ randomly sampled from the training distribution in order to compute the prediction error $E(\pi)$.
+Input to the neural net is the smart home state (a mixed-value vector of controllable binary smart home features concatenated with relevant ambient/environmental states like discrete time $$t \in \mathbb{N}$$), while the output to the neural net is the binary smart home feature component of the state vector (as the environment and time are either only controllable in a control-theoretic sense or not controllable by the smart home). Validation of the predictive control policy $\pi$ is computed via integrating the loss function $$L$$ over an episodic test dataset $$V_{\text{test}}$$ randomly sampled from the training distribution in order to compute the prediction error $$E(\pi)$$.
+$$
+E(\pi) = \sum_{(s_t, s_{t+1}) \in V_{\text{test}}} L \left( \pi_d(s_t), s_{t+1} \right) \right\}
+$$
+An alternative policy prediction measure can be defined as $$Q(\pi,N) = \frac{mN - \left|\left\{ \text{incorrect prediction of feature $$k$$ at time $$t$$} \right\}\right|}{mN}$$, which computes the prediction accuracy in the episode of length $$N$$.
 
-$$E(\pi) = \sum_{(s_t, s_{t+1}) \in V_{\text{test}}} L \left( \pi_d(s_t), s_{t+1} \right) \right\}$$
+**Adaptive Control and Performance Metrics** - Analyze the convergence of the policy for abrupt yet persistent changes in resident behavioral policy $$\pi(\gamma_a \to \gamma_b)$$, which can be interpreted as a trajectory/policy-tracking problem as the training distribution changes from $$\gamma_a$$ to $$\gamma_b$$, and optimize the learning rate $$\alpha$$ of the neural net to maximize prediction accuracy with minimal training cycles for the adjusted distribution $$\gamma_b$$. Generate test data on two trivial classes of distributional devations with varying magnitude/distance of policy deviation: either a (small) subset of a constant trajectory deviates, or a constant trajectory switches to another constant trajectory with no policy intersection. Analyze when the policy $$\pi(\gamma)$$ converges to steady state (when the prediction error ceases to improve with further training on the specified distribution $$\gamma$$).
 
-An alternative policy prediction measure can be defined as $Q(\pi,N) = \frac{mN - \left|\left\{ \text{incorrect prediction of feature $k$ at time $t$} \right\}\right|}{mN}$, which computes the prediction accuracy in the episode of length $N$.
+Overall adaptive performance $$P(\alpha,\gamma)$$ of the imitation learning algorithm will be measured as a function of prediction error of a partially-trained policy $$\pi_d(s_t) =  \hat{s}_{t+1}$$ for a test set representing sample state transition data of the changed trajectory $$V_{\text{test}}$$ after a specified number of training cycles $$d \in \mathbb{N}$$ for a test distribution of trajectories $$\gamma$$. Assume that $$\kappa(d,\gamma)$$ is a fixed monotonically increasing delay function that normalizes/evaluates the penalty of training delay as a function of $$d$$, with $$d$$ bounded by the number of training cycles necessary for the (binary) policy to converge $$D(\alpha,\gamma) \in \mathbb{N}$$.
+$$
+P(\alpha,\gamma) = \max_{d < D(\alpha,\gamma)} \left\{ \kappa(d,\gamma) \cdot \sum_{(s_t, s_{t+1}) \in V_{\text{test}}} L \left( \pi_d(s_t), s_{t+1} \right) \right\}
+$$
+Observe that smaller $$P(\alpha,\gamma)$$ implies versatile performance of the adaptive imitation learning algorithm, because minimizing the integrated test loss $$\sum L$$ minimizes $$P(\alpha,\gamma)$$ yet the training delay penalty $$\kappa(d,\gamma)$$ penalizes/amplifies the loss if the imitation learning algorithm does not rapidly adapt. $$P(\alpha,\gamma)$$ is a worst-case metric, because it takes the maximum of the performance of all partially-trained policies $$\pi_d(\gamma)$$ as it converges to the optimal policy $$\pi(\gamma)$$.
 
-**Adaptive Control and Performance Metrics** - Analyze the convergence of the policy for abrupt yet persistent changes in resident behavioral policy $\pi(\gamma_a \to \gamma_b)$, which can be interpreted as a trajectory/policy-tracking problem as the training distribution changes from $\gamma_a$ to $\gamma_b$, and optimize the learning rate $\alpha$ of the neural net to maximize prediction accuracy with minimal training cycles for the adjusted distribution $\gamma_b$. Generate test data on two trivial classes of distributional devations with varying magnitude/distance of policy deviation: either a (small) subset of a constant trajectory deviates, or a constant trajectory switches to another constant trajectory with no policy intersection. Analyze when the policy $\pi(\gamma)$ converges to steady state (when the prediction error ceases to improve with further training on the specified distribution $\gamma$).
-
-Overall adaptive performance $P(\alpha,\gamma)$ of the imitation learning algorithm will be measured as a function of prediction error of a partially-trained policy $\pi_d(s_t) =  \hat{s}_{t+1}$ for a test set representing sample state transition data of the changed trajectory $V_{\text{test}}$ after a specified number of training cycles $d \in \mathbb{N}$ for a test distribution of trajectories $\gamma$. Assume that $\kappa(d,\gamma)$ is a fixed monotonically increasing delay function that normalizes/evaluates the penalty of training delay as a function of $d$, with $d$ bounded by the number of training cycles necessary for the (binary) policy to converge $D(\alpha,\gamma) \in \mathbb{N}$.
-
-$$P(\alpha,\gamma) = \max_{d < D(\alpha,\gamma)} \left\{ \kappa(d,\gamma) \cdot \sum_{(s_t, s_{t+1}) \in V_{\text{test}}} L \left( \pi_d(s_t), s_{t+1} \right) \right\}$$
-
-Observe that smaller $P(\alpha,\gamma)$ implies versatile performance of the adaptive imitation learning algorithm, because minimizing the integrated test loss $\sum L$ minimizes $P(\alpha,\gamma)$ yet the training delay penalty $\kappa(d,\gamma)$ penalizes/amplifies the loss if the imitation learning algorithm does not rapidly adapt. $P(\alpha,\gamma)$ is a worst-case metric, because it takes the maximum of the performance of all partially-trained policies $\pi_d(\gamma)$ as it converges to the optimal policy $\pi(\gamma)$.
-
-**Unsupervised Learning** - Clustering on checkpoint training data in the time-series form $\{s_t\}_{t=1}^{N}$ to classify state trajectories in an episode or period of time. Construct an index for the classes to the training data, and analyze the performance of the re-trained (or "recovered") policy after removing specified classes of trajectories from the checkpoint training set as a function of the memory capacity of the checkpoint training dataset $C$. In particular, validate if the predictive policy has arguably "un-learned" the deactivated activities with minimal degradation in performance for activated activities in controlling the features of the smart home.
+**Unsupervised Learning** - Clustering on checkpoint training data in the time-series form $$\{s_t\}_{t=1}^{N}$$ to classify state trajectories in an episode or period of time. Construct an index for the classes to the training data, and analyze the performance of the re-trained (or "recovered") policy after removing specified classes of trajectories from the checkpoint training set as a function of the memory capacity of the checkpoint training dataset $$C$$. In particular, validate if the predictive policy has arguably "un-learned" the deactivated activities with minimal degradation in performance for activated activities in controlling the features of the smart home.
 
 ## Tech & Resources
 

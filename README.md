@@ -15,6 +15,17 @@ In this project, we design and implement a simulated prototype of Predi-Home tha
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </p></details>
 
+## Table of Contents
+
+1. Project Objectives
+2. Predi-Home Specifications and Design Overview
+3. Technology and Resources
+4. Prior Work in Smart-Home Automation
+5. Development Notebook
+6. Development Timeline
+7. Repository Contents/Deliverables
+8. Review and Future Work
+
 ## Project Objectives
 
 1) **Imitation Learning** - Design and implement a smart home control algorithm that collects sufficient data on realistically-simulated periodic activities pertaining to controllable features and environment variables in the smart home, iteratively trains an imitation learning model in real-time to learn a predictive control decision policy $$\pi$$ for controllable features in the smart home via trial-and-error, and applies the prediction policy to autonomously control smart features on behalf of resident(s) in the smart home.
@@ -25,7 +36,7 @@ Time permitting...
 
 3) **Unsupervised Learning/Clustering** - Design and implement an efficient unsupervised learning algorithm that approximately differentiates smart home trajectory data into classes of trajectories for a checkpoint subset of past training data of fixed size $$N$$. Such information is summarized for the smart home resident(s), who can manually activate/deactivate specific classes of trajectories in the training data in order to rapidly adjust the training set or control the autonomy of the smart home. Analyze the impact re-training (and necessarily resetting the parameters of) the neural net on a checkpoint subset has on the performance of the imitation decision policy as a function of the memory capacity of the checkpoint training set.
 
-## Project Specifications and Methodology
+## Predi-Home Specifications and Design Overview
 
 ![alt text](https://imgur.com/7zVWSiT.png)
 
@@ -148,7 +159,7 @@ These four papers provide a relatively comprehensive overview of smart home tech
 
 **Finals Week** - Complete the Project and fork/clone the repo on GitHub.
 
-## Deliverables and Repository Contents
+## Repository Contents/Deliverables
 
 Code/programs and design architecture for Predi-Home, including supporting control, data processing, and communication programs in Python, and the training/deployment code for the neural net on AWS that operates as designed if connected to a computer running HomeI/O or a compatible control API for smart homes.
 

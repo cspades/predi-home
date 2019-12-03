@@ -135,7 +135,7 @@ Code/programs and design architecture for Predi-Home, including supporting contr
 
 **home-io-devices-map-en.pdf** is the blueprint of the architecture and features of the smart-home.
 
-**LLLL_sched_#.mat/txt** are MATLAB matrices and CSV's containing corresponding smart-home feature (i.e., lights) time-series data utilized for the machine learning component of Predi-Home.
+<**location**>**_sched_#.mat/txt** are MATLAB matrices and CSV's containing corresponding time-series feature (i.e., lights) data from (locational) source <location> utilized for the machine learning component of Predi-Home.
 
 **time_conv.m** and **time_samp.m** converts the 24-hour time to a sample time index and vice versa, in order to manufacture the smart-home feature data from annotations on the CASAS dataset.
 

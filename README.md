@@ -8,7 +8,7 @@ Predi-Home is a Cloud AI-driven embedded system that trains on the discretized t
 
 In particular, a cloud-based neural net trains on the sequence of states $$\{s_t\}_{t=1}^{N}$$ associated with controllable features of the smart home to determine a predictive decision policy $$\pi(s_t) =  \hat{s}_{t+1}$$ for an autonomous smart home controller with minimal guidance from or interaction with the resident(s) of the smart home. To control the autonomy of the predictive controller, an unsupervised algorithm (i.e., a dynamically-trained $$k$$-means classifier) will differentiate a "checkpoint" subset of the past training data for the imitation learning model in order to group together approximately equivalent trajectories into classes that can be flexibly activated or deactivated in the re-training of the predictive controller.
 
-In this project, we design and implement a simulated prototype of Predi-Home that learns to predict the activity of the lights and doors of a smart home in order to autonomously control the smart home in real-time.
+In this project, we design and implement a simulated prototype of Predi-Home that learns to predict the activity of the lights of a smart home in order to autonomously control the smart home in real-time.
 
 <details><summary></summary>
 <p>
@@ -33,7 +33,7 @@ To design and prototype the system, I utilize [HomeIO](https://realgames.co/home
 
 To communicate data between the smart home simulation on HomeI/O and the machine learning algorithm ideally trained/deployed on the [Amazon Web Services](https://aws.amazon.com/) Cloud, I will program a control and data processing relay via the Python-HomeI/O SDK that executes on a PC (Dell XPS 15) that would be connected to [AWS IoT](https://aws.amazon.com/iot-core/?hp=tile&so-exp=below).
 
-To train an adaptive neural network that learns predictive control policies for all the appliances/computers in the smart home on the Cloud, I will utilize [AWS SageMaker](https://aws.amazon.com/sagemaker/?hp=tile&so-exp=below).
+To train an adaptive neural network that learns predictive control policies for all the appliances/computers in the smart home on the Cloud, I will utilize [scikit-learn](https://scikit-learn.org/stable/) or [TensorFlow](https://www.tensorflow.org/) which in the future will be implemented on [AWS Sagemaker](https://aws.amazon.com/sagemaker/?hp=tile&so-exp=below).
 
 Smart home training/test data is retrieved or artificially designed with guidance from the [CASAS Database](http://casas.wsu.edu/datasets/).
 
@@ -61,7 +61,7 @@ Smart home training/test data is retrieved or artificially designed with guidanc
 4) Compute and backpropagate the error $$e_{t+1} = \hat{s}_{t+1} - s_{t+1}$$ in the neural net to update/train the prediction policy with the binary logistic regression cross-entropy loss $$L$$.
 
 $$
-L \left( \hat{s}_t, s_{t} \right) =  - \left( \sum_{k=1}^m s_{t,k} \log [\sigma(\hat{s}_{t,k})] + (1 - s_{t,k}) \log[1 - \sigma(\hat{s}_{t,k})] \right) \qquad \left( \sigma(x) = \frac{1}{1 + e^{-x}} \right)
+L \left( \hat{s}_t, s_{t} \right) =  -\left( \sum_{k=1}^m s_{t,k} \log [\sigma(\hat{s}_{t,k})] + (1 - s_{t,k}) \log[1 - \sigma(\hat{s}_{t,k})] \right) \qquad \left( \sigma(x) = \frac{1}{1 + e^{-x}} \right)
 $$
 
 5) Repeat *ad infinitum* (as necessary to operate the smart home).
@@ -104,6 +104,8 @@ Observe that smaller $$P(\alpha,\gamma)$$ implies versatile performance of the a
 
 **Smart Home Usage Statistics and Data** - [WSU CASAS Database](http://casas.wsu.edu/datasets/)
 
+**scikit-learn** - [scikit-learn](https://scikit-learn.org/stable/)
+
 **TensorFlow and Keras** - [TensorFlow](https://www.tensorflow.org/) and [Keras](https://www.tensorflow.org/guide/keras)
 
 ## Prior Work in Smart Home Automation and Machine Learning
@@ -120,7 +122,7 @@ These four papers provide a relatively comprehensive overview of smart home tech
 
 ## Development Notebook
 
-1) Assuming that the edge computer/controller is limited in memory and compute, assume that machine learning algorithms/models cannot be trained/deployed on the PC. Consequently, we simulate the existence of an embedded system on the edge via training and deploying the machine learning component on the AWS Cloud. (Note: AWS implementation is in-progress, and will not be included in the project.)
+1) Assuming that the edge computer/controller is limited in memory and compute, assume that machine learning algorithms/models cannot be trained/deployed on the PC. Consequently, we simulate the existence of an embedded system on the edge via training and deploying the machine learning component on the AWS Cloud. (Note: AWS implementation in-progress, and will not be included in the project.)
 
 2) Opted to have the imitation learning problem search for a state-dependent control policy rather than a single optimal state trajectory, because control policies exceptionally improve the versatility and flexibility of the imitation learning model to sequential decision making and adaptation.
 
@@ -128,7 +130,7 @@ These four papers provide a relatively comprehensive overview of smart home tech
 
 4) Simulation datasets will not be painstakingly extracted from HomeI/O. With guidance from the CASAS dataset, I will instead artificially generate the simulation data for the subset of controllable smart home features that the neural net will learn, and exclusively utilize the simulation to analyze/visualize the performance of the predictive control policy $\pi$ in real-time. In reality, the embedded system would be extracting simulation data in each training and prediction cycle, yet instead I will accelerate/automate the training phase of the cycle with larger time-ordered batches of training data that will sequentially/iteratively train the neural net (as if the training data were individually extracted from the simulation). However, deploying the prediction policy will be synchronized in closed loop to emulate the actual operation of the cloud-computed predictive controller.
 
-5) HomeI/O simulation control access is limited to one interface, so it is not (currently) possible to define access privileges and have human override in the loop with the control algorithm.
+5) HomeI/O simulation control access is limited to one interface, so it is unclear how to program access privileges and have human override in the loop with the control algorithm without changing code within HomeI/O.
 
 ## Development Timeline
 
@@ -136,7 +138,7 @@ These four papers provide a relatively comprehensive overview of smart home tech
 
 **Week 6** - Debug the software setup, program the smart home controller on Python, and in consideration of the data structures, memory, communication latency, and the simulation API, roughly design the imitation learning algorithm to learn the control policy of the smart home on AWS Sagemaker.
 
-**Week 7** - Design and code the imitation learning algorithm on AWS Sagemaker, and test/visualize it by training on simulated trajectories of the smart home derived/sourced from reputable smart home resident behavioral statistics databases (WSU CASAS). Validate the performance of the imitation learning model on real-time test data sampled from the training distribution.
+**Week 7** - Design and code the imitation learning algorithm on Python or AWS Sagemaker, and test/visualize it by training on simulated trajectories of the smart home derived/sourced from reputable smart home resident behavioral statistics databases (WSU CASAS). Validate the performance of the imitation learning model on real-time test data sampled from the training distribution.
 
 **Week 8** - Extra time in case of delayed development, as well as prepare for the Demo. 
 

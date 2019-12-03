@@ -72,7 +72,13 @@ $$
 E(\pi) = \sum_{(s_t, s_{t+1}) \in V_{\text{test}}} L \left( \pi_d(s_t), s_{t+1} \right)
 $$
 
-An alternative policy prediction measure can be defined as $$Q(\pi,N) = \frac{mN - \left\|\left\{ \text{incorrect prediction of feature k at time t} \right\}\right\|}{mN}$$, which computes the prediction accuracy in the episode of length $$N$$.
+An alternative policy prediction measure can be defined as
+
+$$
+Q(\pi,N) = \frac{mN - \left\lVert\left\{ \text{incorrect prediction of feature k at time t} \right\}\right\rVert}{mN}
+$$
+
+that computes the prediction accuracy in the episode of length $$N$$.
 
 **Adaptive Control and Performance Metrics** - Analyze the convergence of the policy for abrupt yet persistent changes in resident behavioral policy $$\pi(\gamma_a \to \gamma_b)$$, which can be interpreted as a trajectory/policy-tracking problem as the training distribution changes from $$\gamma_a$$ to $$\gamma_b$$, and optimize the learning rate $$\alpha$$ of the neural net to maximize prediction accuracy with minimal training cycles for the adjusted distribution $$\gamma_b$$. Generate test data on two trivial classes of distributional devations with varying magnitude/distance of policy deviation: either a (small) subset of a constant trajectory deviates, or a constant trajectory switches to another constant trajectory with no policy intersection. Analyze when the policy $$\pi(\gamma)$$ converges to steady state (when the prediction error ceases to improve with further training on the specified distribution $$\gamma$$).
 

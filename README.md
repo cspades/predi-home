@@ -56,7 +56,7 @@ L \left( \hat{s}_t, s_{t} \right) =  - \left( \sum_{k=1}^m s_{t,k} \log [\sigma(
 $$
 5) Repeat *ad infinitum* (as necessary to operate the smart home).
 
-Input to the neural net is the smart home state (a mixed-value vector of controllable binary smart home features concatenated with relevant ambient/environmental states like discrete time $$t \in \mathbb{N}$$), while the output to the neural net is the binary smart home feature component of the state vector (as the environment and time are either only controllable in a control-theoretic sense or not controllable by the smart home). Validation of the predictive control policy $\pi$ is computed via integrating the loss function $$L$$ over an episodic test dataset $$V_{\text{test}}$$ randomly sampled from the training distribution in order to compute the prediction error $$E(\pi)$$.
+Input to the neural net is the smart home state (a mixed-value vector of controllable binary smart home features concatenated with relevant ambient/environmental states like discrete time $$t \in \mathbb{N}$$), while the output to the neural net is the binary smart home feature component of the state vector (as the environment and time are either only controllable in a control-theoretic sense or not controllable by the smart home). Validation of the predictive control policy $$\pi$$ is computed via integrating the loss function $$L$$ over an episodic test dataset $$V_{\text{test}}$$ randomly sampled from the training distribution in order to compute the prediction error $$E(\pi)$$.
 $$
 E(\pi) = \sum_{(s_t, s_{t+1}) \in V_{\text{test}}} L \left( \pi_d(s_t), s_{t+1} \right) \right\}
 $$

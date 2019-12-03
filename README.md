@@ -105,6 +105,8 @@ These four papers provide a relatively comprehensive overview of smart home tech
 
 4) Simulation datasets will not be painstakingly extracted from HomeI/O. With guidance from the CASAS dataset, I will instead artificially generate the simulation data for the subset of controllable smart home features that the neural net will learn, and exclusively utilize the simulation to analyze/visualize the performance of the predictive control policy $\pi$ in real-time. In reality, the embedded system would be extracting simulation data in each training and prediction cycle, yet instead I will accelerate/automate the training phase of the cycle with larger time-ordered batches of training data that will sequentially/iteratively train the neural net (as if the training data were individually extracted from the simulation). However, deploying the prediction policy will be synchronized in closed loop to emulate the actual operation of the cloud-computed predictive controller.
 
+5) HomeI/O simulation control access is limited to one interface, so it is not (currently) possible to define access privileges and have human override in the loop with the control algorithm.
+
 ## Development Timeline
 
 **Week 5** - Initiate setup for the software platform of the system, with tests to communicate between PC (HomeIO) and AWS IoT.

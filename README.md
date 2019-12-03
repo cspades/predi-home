@@ -65,6 +65,7 @@ Smart home training/test data is retrieved or artificially designed with guidanc
 **Imitation Learning** - Training iteratively on periodic batches of episodic data with $$m$$ controllable features in the state-transition form $$\{(s_t, s_{t+1})\}_{t=1}^{N-1} \subset \left(\left\{ 0,1 \right\}^m \times \left\{ 1, \dots, N \right\}\right)^2$$ to learn a predictive control policy $$\pi(s_t) =  \hat{s}_{t+1}$$.
 
 **Imitation Learning Algorithm**
+
 1) Apply current prediction policy at the state $$s_{t}$$ to actuate the predicted state $$\hat{s}_{t+1}$$ for discrete time $$t \in \mathbb{N}$$.
 
 2) Wait until the following time-step $$t+1$$.

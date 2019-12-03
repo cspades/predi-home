@@ -13,7 +13,7 @@ In this project, we design and implement a simulated prototype of Predi-Home tha
 <details><summary></summary>
 <p>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-</p>
+</p></details>
 
 ## Project Objectives
 

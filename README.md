@@ -66,7 +66,7 @@ Smart home training/test data is retrieved or artificially designed with guidanc
 
 **Imitation Learning Algorithm**
 
-1) Apply current prediction policy at the state $$s_{t}$$ to actuate the predicted state $$\hat{s}_{t+1}$$ for discrete time $$t \in \mathbb{N}$$.
+1) Apply prediction policy at the state $$s_{t}$$ to actuate the predicted state $$\hat{s}_{t+1}$$ for discrete time $$t \in \mathbb{N}$$.
 
 2) Wait until the following time-step $$t+1$$.
 

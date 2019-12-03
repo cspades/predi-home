@@ -75,7 +75,7 @@ $$
 An alternative policy prediction measure can be defined as
 
 $$
-Q(\pi,N) = \frac{mN - \lVert\left\{ \text{incorrect prediction of feature k at time t} \right\}\rVert}{mN}
+Q(\pi,N) = \frac{mN - \left\lvert\left\{ \text{incorrect prediction of feature k at time t} \right\}\right\rvert}{mN}
 $$
 
 that computes the prediction accuracy in the episode of length $$N$$.

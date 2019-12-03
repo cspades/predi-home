@@ -129,6 +129,10 @@ Code/programs and design architecture for Predi-Home, including supporting contr
 
 **Project Status** - In-Progress!
 
+## Video Presentation on YouTube
+
+TBA
+
 ## Future Work
 
 Extend Predi-Home to control all digital and analog features/devices in a modern smart home. Add disruptive noise and compensating filters to the control algorithm. Test on actual smart homes.

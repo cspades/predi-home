@@ -10,7 +10,7 @@ In particular, a cloud-based neural net trains on the sequence of states $$\{s_t
 
 In this project, we design and implement a simulated prototype of Predi-Home that learns to predict the activity of the lights of a smart home in order to autonomously control the smart home in real-time.
 
-<details><summary></summary>
+<details><summary>**Project Status** - In-Progress!</summary>
 <p>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </p></details>
@@ -113,8 +113,6 @@ Code/programs and design architecture for Predi-Home, including supporting contr
 **(location)\_sched\_#.mat/txt** are MATLAB matrices and CSV's containing corresponding time-series feature (i.e., lights) data from source (location) utilized for the machine learning component of Predi-Home.
 
 **time_conv.m** and **time_samp.m** converts the 24-hour time to a sample time index and vice versa, in order to manufacture the smart-home feature data from annotations on the CASAS dataset.
-
-**Project Status** - In-Progress!
 
 ## Tech & Resources
 

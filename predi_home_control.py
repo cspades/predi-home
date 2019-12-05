@@ -1,9 +1,7 @@
-import sys
 import time
 import clr
 import numpy as np
 import pandas as pd
-from sklearn.model_selection import GridSearchCV
 from sklearn.neural_network import MLPClassifier
 
 clr.AddReference('EngineIO')
@@ -59,7 +57,7 @@ df = pd.read_csv('milan_sched_1.txt', header=None)
 # Adaptation Test - Override Training Data
 df_override = pd.read_csv('kyoto_sched_1.txt', header=None)
 df_override["Time"] = np.arange(t_intervals.shape[0])
-adapt_test = False
+adapt_test = True
 
 print("Maching Learning Pre-Training & Setup Phase Initiated.")
 
@@ -78,15 +76,15 @@ model.fit(X_train, Y_train)
 # Re-calibrate model parameters for adaptation mode.
 mlp_params = {
 	'learning_rate_init': 0.0047,
-	'max_iter': 100,
-	'n_iter_no_change': 10,
+	'max_iter': 1000,
+	'n_iter_no_change': 750,
 	'warm_start': True,
 	'verbose': False
 }
 model.set_params(**mlp_params)
 
 # Construct adaptation data cache.
-obs_hist = pd.DataFrame()
+obs_hist = []
 
 print("Maching Learning Pre-Training & Setup Phase Completed.")
 
@@ -127,11 +125,11 @@ try:
 
 		# Memorize training data.
 		if not adapt_test:
-			obs_hist.append(obs_var, ignore_index=True)
+			obs_hist.append(obs_var)
 		else:
 			# Adaptation Test - Simulate Human Override.
 			override_var = df_override[df_override["Time"] == t_step]
-			obs_hist.append(override_var, ignore_index=True)
+			obs_hist.append(override_var)
 
 		# Predict smart-home state with ML.
 		pred_var = model.predict(obs_var)
@@ -157,15 +155,15 @@ try:
 			print("Partial Training Initiated.")
 
 			# Construct training data.
-			X_adapt = obs_hist.copy()
-			Y_adapt = obs_hist.copy().iloc[np.arange(1 - len(obs_hist), 1)]
-			Y_adapt.index = np.arange(len(obs_hist))
+			df_obs = pd.concat(obs_hist, ignore_index=True)
+			y_obs = df_obs.drop(["Time"], axis=1).iloc[np.arange(1 - len(df_obs), 1)]
+			y_obs.index = np.arange(len(df_obs))
 
 			# Train on recent data.
-			model.fit(X_adapt, Y_adapt)
+			model.fit(df_obs, y_obs)
 
 			# Clear the training cache.
-			obs_hist = pd.DataFrame()
+			obs_hist = []
 
 			print("Partial Training Completed.")
 

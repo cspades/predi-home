@@ -12,38 +12,12 @@ from sklearn.neural_network import MLPClassifier
 T = 60 * 10
 t_intervals = np.arange(0, 86400, T)
 
-# Set Learned/Predicted Simulation Variable Index
-var_index = [0, # A (0)
-			 19, # B1 (1)
-			 20, # B2 (2)
-			 40, # D1 (3)
-			 41, # D2 (4)
-			 54, # E (5)
-			 68, # F1 (6)
-			 69, # F2 (7)
-			 83, # G (8)
-			 97, # H (9)
-			 110, # I1 (10)
-			 111, # I2 (11)
-			 122, # J (12)
-			 135, # K (13)
-			 146, # L (14)
-			 159, # M (15)
-			 172, # N1 (16)
-			 173, # N2 (17)
-			 174, # N3 (18)
-			 187, # O1 (19)
-			 188, # O2 (20)
-			 189, # OP (21)
-			 190, # OG (22)
-			 191] # OE (23)
-
 # Import training/history data.
 df = pd.read_csv('milan_sched_1.txt', header=None)
 
 # Construct training data.
 X_train = df.copy()
-X_train["Time"] = np.arange(144)
+X_train["Time"] = np.arange(t_intervals.shape[0])
 Y_train = df.copy().iloc[np.arange(1-len(df), 1)]
 Y_train.index = np.arange(len(df))
 

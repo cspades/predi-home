@@ -10,7 +10,7 @@ In particular, a cloud-based neural net trains on the sequence of states $$\{s_t
 
 In this project, we design and implement a simulated prototype of Predi-Home that learns to predict the activity of the lights of a smart home in order to autonomously control the smart home in real-time.
 
-<details><summary></summary>
+<details><summary><b>Project Status</b> - In-Progress!</summary>
 <p>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </p></details>
@@ -30,7 +30,7 @@ In this project, we design and implement a simulated prototype of Predi-Home tha
 
 ## Project Objectives
 
-1) **Imitation Learning** - Design and implement a smart home control algorithm that collects sufficient data on realistically-simulated periodic activities pertaining to controllable features and environment variables in the smart home, iteratively trains an imitation learning model in real-time to learn a predictive control decision policy $$\pi$$ for controllable features in the smart home via trial-and-error, and applies the prediction policy to autonomously control smart features on behalf of resident(s) in the smart home.
+1) **Imitation Learning** - Design and implement a smart home control algorithm that collects sufficient data on realistically-simulated periodic activities pertaining to controllable features and environment variables in the smart home, iteratively trains an imitation learning model in real-time to learn a predictive control decision policy $$\pi$$ for controllable features in the smart home via trial-and-error, and applies the predictions to autonomously control smart features on behalf of resident(s) in the smart home.
 
 2) **Adaptive Control and Performance Metrics** - Optimize the amount of time and computation necessary for the imitation learning model to functionally adapt to changes in activity patterns of various complexity in the smart home. Analyze trade-off between adaptation rate and predictive accuracy of the smart control algorithm, which depends on the learning rate $$\alpha$$ of the neural net.
 
@@ -42,7 +42,7 @@ Time permitting...
 
 ![alt text](https://imgur.com/7zVWSiT.png)
 
-To design and prototype the system, I utilize [HomeIO](https://realgames.co/home-io/) to simulate and control the features of the smart home.
+To design and prototype the system, I utilize [HomeIO](https://realgames.co/home-io/) to simulate and control the smart home.
 
 To communicate data between the smart home simulation on HomeI/O and the machine learning algorithm ideally trained/deployed on the [Amazon Web Services](https://aws.amazon.com/) Cloud, I will program a control and data processing relay via the Python-HomeI/O SDK that executes on a PC (Dell XPS 15) that would be connected to [AWS IoT](https://aws.amazon.com/iot-core/?hp=tile&so-exp=below).
 
@@ -113,8 +113,6 @@ Code/programs and design architecture for Predi-Home, including supporting contr
 **(location)\_sched\_#.mat/txt** are MATLAB matrices and CSV's containing corresponding time-series feature (i.e., lights) data from source (location) utilized for the machine learning component of Predi-Home.
 
 **time_conv.m** and **time_samp.m** converts the 24-hour time to a sample time index and vice versa, in order to manufacture the smart-home feature data from annotations on the CASAS dataset.
-
-**Project Status** - In-Progress!
 
 ## Tech & Resources
 

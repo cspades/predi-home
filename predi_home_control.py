@@ -3,6 +3,7 @@ import clr
 import numpy as np
 import pandas as pd
 from sklearn.neural_network import MLPClassifier
+from sklearn.utils import shuffle
 
 clr.AddReference('EngineIO')
 
@@ -51,48 +52,52 @@ var_index = [0, # A (0)
 			 190, # OG (22)
 			 191] # OE (23)
 
+print("Maching Learning Pre-Training & Setup Phase Initiated.")
+
 # Import training/history data.
 df = pd.read_csv('milan_sched_1.txt', header=None)
 
 # Adaptation Test - Override Training Data
 df_override = pd.read_csv('kyoto_sched_1.txt', header=None)
-df_override["Time"] = np.arange(t_intervals.shape[0])
 adapt_test = True
-
-print("Maching Learning Pre-Training & Setup Phase Initiated.")
 
 # Construct training data.
 X_train = df.copy()
 X_train["Time"] = np.arange(t_intervals.shape[0])
 Y_train = df.copy().iloc[np.arange(1-len(df), 1)]
 Y_train.index = np.arange(len(df))
+df_override["Time"] = np.arange(t_intervals.shape[0])
 
 # Initialize Pre-Trained MLP Classifier
-model = MLPClassifier(hidden_layer_sizes=(45, 45, 45), activation='relu', solver='adam', learning_rate_init=0.0047,
-					  tol=0.5, max_iter=20000, n_iter_no_change=16400)
-# Overfit.
-model.fit(X_train, Y_train)
-
-# Re-calibrate model parameters for adaptation mode.
 mlp_params = {
-	'learning_rate_init': 0.0047,
-	'max_iter': 1000,
-	'n_iter_no_change': 750,
-	'warm_start': True,
-	'verbose': False
+	"hidden_layer_sizes": (45, 45, 45),
+	"activation": 'relu',
+	"solver": 'adam',
+	"learning_rate_init": 0.002,
+	"max_iter": 24000,
+	"n_iter_no_change": 20000,
+	"warm_start": True,
+	"verbose": False
 }
-model.set_params(**mlp_params)
+model = MLPClassifier(**mlp_params)
 
-# Construct adaptation data cache.
+# Overfit.
+t_0 = time.time()
+model.fit(X_train, Y_train)
+t_1 = time.time()
+print("Pre-Training Time =", t_1 - t_0)
+
+# Set adaptation rate and construct adaptation data cache.
 obs_hist = []
+train_cycles = 25
 
 print("Maching Learning Pre-Training & Setup Phase Completed.")
 
 # Synchronize Timer & Initialize (Consistent) Smart-Home Features
 MemoryMap.Instance.Update()
 t_sim = compute_sec(sim_time.Value.Second,
-				sim_time.Value.Minute,
-				sim_time.Value.Hour)
+					sim_time.Value.Minute,
+					sim_time.Value.Hour)
 t_step = int(np.floor(t_sim / T)) + 1
 for k in range(len(var_index)):
 	sim_output[var_index[k]].Value = df.iloc[t_step - 1, k]
@@ -125,6 +130,7 @@ try:
 
 		# Memorize training data.
 		if not adapt_test:
+			# Utilize observed features to train ML.
 			obs_hist.append(obs_var)
 		else:
 			# Adaptation Test - Simulate Human Override.
@@ -159,8 +165,13 @@ try:
 			y_obs = df_obs.drop(["Time"], axis=1).iloc[np.arange(1 - len(df_obs), 1)]
 			y_obs.index = np.arange(len(df_obs))
 
-			# Train on recent data.
-			model.fit(df_obs, y_obs)
+			# Train on recent data with multiple training cycles determined by adaptation rate.
+			t_0 = time.time()
+			for n in range(train_cycles):
+				X_shuffled, Y_shuffled = shuffle(df_obs, y_obs)
+				model.fit(X_shuffled, Y_shuffled)
+			t_1 = time.time()
+			print("Adaptation Training Time =", t_1 - t_0)
 
 			# Clear the training cache.
 			obs_hist = []
@@ -171,4 +182,3 @@ except KeyboardInterrupt:
 	print("Simulation Terminated.")
 	MemoryMap.Instance.Dispose()
 	print("Memory Map Disposed.")
-	time.sleep(3)

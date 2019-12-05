@@ -3,7 +3,6 @@ import clr
 import numpy as np
 import pandas as pd
 from sklearn.neural_network import MLPClassifier
-from sklearn.utils import shuffle
 
 clr.AddReference('EngineIO')
 
@@ -14,10 +13,6 @@ def compute_sec(s, m, h):
 
 print("Predi-Home is initializing...")
 
-# Construct simulation control variables for HomeIO.
-sim_output = {k: MemoryMap.Instance.GetBit(k, MemoryType.Output) for k in range(195)}
-sim_time = MemoryMap.Instance.GetDateTime(0, MemoryType.Input)
-
 # Sampling + Control Frequency in Seconds
 # NOTE: T should preferably divide 60*60*24 to optimize
 # performance and efficiency of prediction/adaptation.
@@ -25,6 +20,10 @@ sim_time = MemoryMap.Instance.GetDateTime(0, MemoryType.Input)
 # model will interpolate the temporal predictions.
 T = 60 * 10
 t_intervals = np.arange(0, 86400, T)
+
+# Construct simulation control variables for HomeIO.
+sim_output = {k: MemoryMap.Instance.GetBit(k, MemoryType.Output) for k in range(195)}
+sim_time = MemoryMap.Instance.GetDateTime(0, MemoryType.Input)
 
 # Set Learned/Predicted Simulation Variable Index
 var_index = [0, # A (0)
@@ -76,6 +75,7 @@ mlp_params = {
 	"learning_rate_init": 0.002,
 	"max_iter": 24000,
 	"n_iter_no_change": 20000,
+	"shuffle": True,
 	"warm_start": True,
 	"verbose": False
 }
@@ -89,7 +89,7 @@ print("Pre-Training Time =", t_1 - t_0)
 
 # Set adaptation rate and construct adaptation data cache.
 obs_hist = []
-train_cycles = 25
+adapt_rate = 25
 
 print("Maching Learning Pre-Training & Setup Phase Completed.")
 
@@ -167,9 +167,8 @@ try:
 
 			# Train on recent data with multiple training cycles determined by adaptation rate.
 			t_0 = time.time()
-			for n in range(train_cycles):
-				X_shuffled, Y_shuffled = shuffle(df_obs, y_obs)
-				model.fit(X_shuffled, Y_shuffled)
+			for n in range(adapt_rate):
+				model.fit(df_obs, y_obs)
 			t_1 = time.time()
 			print("Adaptation Training Time =", t_1 - t_0)
 

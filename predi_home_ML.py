@@ -3,7 +3,6 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import GridSearchCV
 from sklearn.neural_network import MLPClassifier
-from sklearn.utils import shuffle
 
 def df_diff(df1, df2):
 	return (df1 != df2).astype(int).sum().sum()
@@ -17,7 +16,6 @@ df = pd.read_csv('milan_sched_1.txt', header=None)
 # Adaptation Test - Override Training Data
 df_override = pd.read_csv('kyoto_sched_1.txt', header=None)
 adapt_test = True
-train_cyc = 100
 err_graph = [] # Errors relative to adaptive dataset.
 div_graph = [] # Errors relative to pre-trained dataset.
 
@@ -32,7 +30,7 @@ X_adapt["Time"] = np.arange(t_intervals.shape[0])
 Y_adapt = df_override.copy().iloc[np.arange(1-len(df_override), 1)]
 Y_adapt.index = np.arange(len(df_override))
 
-# Initialize Pre-Trained MLP Classifier
+# Initialize Pre-Trained MLP Classifier for Reinforcement/Imitation Learning
 mlp_params = {
 	"hidden_layer_sizes": (45, 45, 45),
 	"activation": 'relu',
@@ -40,6 +38,7 @@ mlp_params = {
 	"learning_rate_init": 0.002,
 	"max_iter": 24000,
 	"n_iter_no_change": 20000,
+	"shuffle": True,
 	"warm_start": True,
 	"verbose": False,
 	"random_state": 2589
@@ -67,11 +66,10 @@ error = df_diff(df_preds.drop(["Time"], axis=1), X_train.iloc[1:].drop(["Time"],
 print("Optimal Error =", error)
 
 print("Adaptation Phase.")
-for k in range(train_cyc):
+for k in range(100):
 
 	# Adapt.
-	X_shuffled, Y_shuffled = shuffle(X_adapt, Y_adapt)
-	model.fit(X_shuffled, Y_shuffled)
+	model.fit(X_adapt, Y_adapt)
 
 	# Test.
 	preds = [pd.DataFrame(model.predict(X_adapt[X_adapt["Time"] == 0]))]

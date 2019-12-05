@@ -56,6 +56,11 @@ var_index = [0, # A (0)
 # Import training/history data.
 df = pd.read_csv('milan_sched_1.txt', header=None)
 
+# Adaptation Test - Override Training Data
+df_override = pd.read_csv('kyoto_sched_1.txt', header=None)
+df_override["Time"] = np.arange(t_intervals.shape[0])
+adapt_test = False
+
 print("Maching Learning Pre-Training & Setup Phase Initiated.")
 
 # Construct training data.
@@ -83,7 +88,9 @@ model.set_params(**mlp_params)
 # Construct adaptation data cache.
 obs_hist = pd.DataFrame()
 
-# Synchronize Timer & Initialize (Consistent) Smart-Home Variables
+print("Maching Learning Pre-Training & Setup Phase Completed.")
+
+# Synchronize Timer & Initialize (Consistent) Smart-Home Features
 MemoryMap.Instance.Update()
 t_sim = compute_sec(sim_time.Value.Second,
 				sim_time.Value.Minute,
@@ -117,11 +124,18 @@ try:
 		# Extract simulation variables.
 		obs_var = pd.DataFrame(data={k: [int(sim_output[var_index[k]].Value)] for k in range(len(var_index))})
 		obs_var['Time'] = t_step
-		obs_hist.append(obs_var, ignore_index=True)
+
+		# Memorize training data.
+		if not adapt_test:
+			obs_hist.append(obs_var, ignore_index=True)
+		else:
+			# Adaptation Test - Simulate Human Override.
+			override_var = df_override[df_override["Time"] == t_step]
+			obs_hist.append(override_var, ignore_index=True)
 
 		# Predict smart-home state with ML.
 		pred_var = model.predict(obs_var)
-		print("Time = ", t_step, "Predictions = ", pred_var)
+		print("Time Step = ", t_step, "| Predictions = ", pred_var)
 
 		# Apply the predictive model to adjust the control variables of the simulation.
 		for k in range(len(var_index)):
@@ -133,7 +147,7 @@ try:
 
 		# Update the timer/CLK.
 		t_step += 1
-		if t_step >= t_intervals.size:
+		if t_step >= t_intervals.shape[0]:
 			# Reset timer/CLK.
 			t_step = 0
 
@@ -142,16 +156,13 @@ try:
 			# or else the timer/CLK will lag by the excess training delay per cycle.
 			print("Partial Training Initiated.")
 
-			# Avoid training on corrupted data.
-			if len(obs_hist) == t_intervals.shape[0]:
+			# Construct training data.
+			X_adapt = obs_hist.copy()
+			Y_adapt = obs_hist.copy().iloc[np.arange(1 - len(obs_hist), 1)]
+			Y_adapt.index = np.arange(len(obs_hist))
 
-				# Construct training data.
-				X_adapt = obs_hist.copy()
-				Y_adapt = obs_hist.copy().iloc[np.arange(1 - len(df), 1)]
-				Y_adapt.index = np.arange(len(df))
-
-				# Train on recent data.
-				model.fit(X_adapt, Y_adapt)
+			# Train on recent data.
+			model.fit(X_adapt, Y_adapt)
 
 			# Clear the training cache.
 			obs_hist = pd.DataFrame()

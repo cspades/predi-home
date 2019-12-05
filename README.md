@@ -100,7 +100,7 @@ Observe that smaller $$P(\alpha,\gamma)$$ implies versatile performance of the a
 
 ## GitHub Repository Contents/Deliverables
 
-Code/programs and design architecture for Predi-Home, including supporting control, data processing, and communication programs in Python, and the training/deployment code for the neural net on AWS that operates as designed if connected to a computer running HomeI/O or a compatible control API for smart homes.
+Code/programs and design architecture for Predi-Home, including supporting control, data processing, and communication programs in Python 3.7.5, and the training/deployment code for the neural net on AWS that operates as designed if connected to a computer running HomeI/O or a compatible control API for smart homes.
 
 **predi-home-control.py** is the Python program that executes the smart-home control and machine learning algorithm.
 

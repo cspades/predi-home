@@ -69,13 +69,13 @@ df_override["Time"] = np.arange(t_intervals.shape[0])
 
 # Initialize Pre-Trained MLP Classifier
 mlp_params = {
-	"hidden_layer_sizes": (45, 45, 45),
+	"hidden_layer_sizes": (25, 25, 25, 25),
 	"activation": 'relu',
 	"solver": 'adam',
-	"learning_rate_init": 0.002,
+	"learning_rate_init": 0.0017,
 	"max_iter": 24000,
-	"n_iter_no_change": 20000,
-	"shuffle": True,
+	"n_iter_no_change": 2500,
+	"shuffle": False,
 	"warm_start": True,
 	"verbose": False
 }
@@ -89,7 +89,7 @@ print("Pre-Training Time =", t_1 - t_0)
 
 # Set adaptation rate and construct adaptation data cache.
 obs_hist = []
-adapt_rate = 25
+adapt_rate = 20
 
 print("Maching Learning Pre-Training & Setup Phase Completed.")
 

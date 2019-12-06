@@ -32,16 +32,15 @@ Y_adapt.index = np.arange(len(df_override))
 
 # Initialize Pre-Trained MLP Classifier for Reinforcement/Imitation Learning
 mlp_params = {
-	"hidden_layer_sizes": (45, 45, 45),
+	"hidden_layer_sizes": (25, 25, 25, 25),
 	"activation": 'relu',
 	"solver": 'adam',
-	"learning_rate_init": 0.002,
+	"learning_rate_init": 0.0017,
 	"max_iter": 24000,
-	"n_iter_no_change": 20000,
-	"shuffle": True,
+	"n_iter_no_change": 2500,
+	"shuffle": False,
 	"warm_start": True,
-	"verbose": False,
-	"random_state": 2589
+	"verbose": False
 }
 model = MLPClassifier(**mlp_params)
 
@@ -52,7 +51,7 @@ model.fit(X_train, Y_train)
 t1 = time.time()
 print("Training Time = ", t1 - t0)
 
-# Compute Prediction Error.
+# Compute Sequential Trajectory Predictions.
 preds = [pd.DataFrame(model.predict(X_train[X_train["Time"] == 0]))]
 preds[0]["Time"] = 1
 for t in range(2, t_intervals.shape[0]):
@@ -60,10 +59,13 @@ for t in range(2, t_intervals.shape[0]):
 	preds[-1]["Time"] = t
 df_preds = pd.concat(preds, ignore_index=True)
 df_preds.index = np.arange(1, t_intervals.shape[0])
+pd.DataFrame(model.predict(X_train)).to_csv('preds', ',')
 
 # Compute (propagated) error in predictions.
 error = df_diff(df_preds.drop(["Time"], axis=1), X_train.iloc[1:].drop(["Time"], axis=1))
-print("Optimal Error =", error)
+print("Optimal Pre-Train Error =", error)
+target_error = df_diff(df_preds.drop(["Time"], axis=1), X_adapt.iloc[1:].drop(["Time"], axis=1))
+print("Initial Adapt Error =", target_error)
 
 print("Adaptation Phase.")
 for k in range(100):
@@ -89,7 +91,7 @@ for k in range(100):
 	print('Divergence Measure = %d for cycle %d' % (diverge, k))
 
 # Output predictions and error stats.
-pd.DataFrame(model.predict(X_adapt)).to_csv('preds', ',')
+pd.DataFrame(model.predict(X_adapt)).to_csv('preds_adapt', ',')
 pd.DataFrame(err_graph).to_csv('error_data', ',', index=False)
 pd.DataFrame(div_graph).to_csv('divergence_data', ',', index=False)
 print("Test completed.")

@@ -160,6 +160,6 @@ These four papers provide a relatively comprehensive overview of smart home tech
 
 Extend Predi-Home to control all digital and analog features/devices in a modern smart home. Add disruptive noise and compensating filters to the control algorithm. Test on actual smart homes.
 
-Re-training a neural net is not particularly efficient. Is it possible to efficiently un-train a neural net, perhaps via generating data that counteracts the impact of training on a set of data?
+Re-training a neural net is not particularly efficient.
 
 **Developed by Cory Ye, for the embedded systems course ECE M202A at UCLA.**

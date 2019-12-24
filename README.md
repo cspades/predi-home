@@ -24,9 +24,7 @@ In this project, we design and implement a simulated prototype of Predi-Home tha
 5. Predi-Home Implementation Analysis, Data, and Evaluation
 6. Prior Work in Smart-Home Automation
 7. Development Notebook
-8. Development Timeline
-9. Video Presentation on YouTube
-10. Project Review and Future Work
+8. Project Review and Future Work
 
 ## Project Objectives
 

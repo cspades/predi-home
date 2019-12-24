@@ -158,22 +158,6 @@ These four papers provide a relatively comprehensive overview of smart home tech
 
 5) HomeI/O simulation control access is limited to one external interface, and it is unclear how to program access privileges between multiple external connections to have human override in the loop with the control algorithm without changing code within HomeI/O.
 
-## Development Timeline
-
-**Week 5** - Initiate setup for the software platform of the system, with tests to communicate between PC (HomeIO) and AWS IoT.
-
-**Week 6** - Debug the software setup, program the smart home controller on Python, and in consideration of the data structures, memory, communication latency, and the simulation API, roughly design the imitation learning algorithm to learn the control policy of the smart home on AWS Sagemaker.
-
-**Week 7** - Design and code the imitation learning algorithm on Python or AWS Sagemaker, and test/visualize it by training on simulated trajectories of the smart home derived/sourced from reputable smart home resident behavioral statistics databases (WSU CASAS). Validate the performance of the imitation learning model on real-time test data sampled from the training distribution.
-
-**Week 8** - Extra time in case of delayed development, as well as prepare for the Demo. 
-
-**Week 9** - Close the loop and program the smart home control algorithm that extracts/processes data from the simulation (HomeI/O), sends it to the Cloud (AWS IoT), retrieves the adaptive/learned policy (AWS Sagemaker), and control the smart home simulation (Python).
-
-**Week 10** - Debug/optimize the control and ML algorithm(s), and prepare auxiliary materials (report, video, website, etc.) for the Project. Study the possibility of applying unsupervised learning and data summarization on the training dataset to extract approximately unique trajectories that the resident uses to customize the autonomy of the smart home.
-
-**Finals Week** - Complete the Project and fork/clone the repo on GitHub.
-
 ## Project Review and Future Work
 
 Extend Predi-Home to control all digital and analog features/devices in a modern smart home. Add disruptive noise and compensating filters to the control algorithm. Test on actual smart homes.

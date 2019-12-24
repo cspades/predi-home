@@ -10,7 +10,7 @@ In particular, a cloud-based neural net trains on the sequence of states $$\{s_t
 
 In this project, we design and implement a simulated prototype of Predi-Home that learns to predict the activity of the lights of a smart home in order to autonomously control the smart home in real-time.
 
-<details><summary><b>Project Status</b> - In-Progress!</summary>
+<details><summary><b>Project Status</b> - In-Progress! (Porting to TensorFlow.)</summary>
 <p>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </p></details>
@@ -173,10 +173,6 @@ These four papers provide a relatively comprehensive overview of smart home tech
 **Week 10** - Debug/optimize the control and ML algorithm(s), and prepare auxiliary materials (report, video, website, etc.) for the Project. Study the possibility of applying unsupervised learning and data summarization on the training dataset to extract approximately unique trajectories that the resident uses to customize the autonomy of the smart home.
 
 **Finals Week** - Complete the Project and fork/clone the repo on GitHub.
-
-## Video Presentation on YouTube
-
-TBA
 
 ## Project Review and Future Work
 

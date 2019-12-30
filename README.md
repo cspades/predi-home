@@ -1,6 +1,6 @@
 ![alt text](https://imgur.com/OCAhIp1.png) 
 
-# predi-home
+# predi-home ([cspades / predi-home](https://cspades.github.io/predi-home/))
 
 ## Abstract
 

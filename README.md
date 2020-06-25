@@ -10,7 +10,7 @@ In particular, a cloud-based neural net trains on the sequence of states $$\{s_t
 
 In this project, we design and implement a simulated prototype of Predi-Home that learns to predict the activity of the lights of a smart home in order to autonomously control the smart home in real-time.
 
-<details><summary><b>Project Status</b> - Post-poned.</summary>
+<details><summary><b>Project Status</b> - Incomplete, due to lack of data and compute. Not ported to TensorFlow or AWS.</summary>
 <p>
   <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 </p></details>
